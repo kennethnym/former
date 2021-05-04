@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:former/src/form_provider.dart';
+import 'package:former/src/former_provider.dart';
 import 'package:former/src/former_field.dart';
 import 'package:provider/provider.dart';
 

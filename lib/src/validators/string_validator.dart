@@ -14,6 +14,7 @@ class StringValidator implements Validator<String?> {
     for (final validator in _validators) {
       final err = validator(value);
       if (err.isNotEmpty) {
+        print(err);
         _error = err;
         return false;
       }
@@ -48,7 +49,7 @@ class StringValidator implements Validator<String?> {
   /// anything more complicated.
   void email([String? errorMessage]) {
     matches(RegExp('[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+'),
-        errorMessage ?? 'The string is a valid email address.');
+        errorMessage ?? 'The string is not a valid email address.');
   }
 
   /// Instructs [StringValidator] to make sure the given string

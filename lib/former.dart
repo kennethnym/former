@@ -4,6 +4,7 @@ library former;
 
 // form building components
 export 'src/former_form.dart';
+export 'src/former_provider.dart';
 export 'src/former_field.dart';
 export 'src/former_schema.dart';
 

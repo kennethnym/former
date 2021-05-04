@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:former/src/form_provider.dart';
+import 'package:former/src/former_provider.dart';
 import 'package:former/src/former_schema.dart';
 import 'package:provider/provider.dart';
 
@@ -22,9 +22,12 @@ class Former extends StatelessWidget {
     required this.child,
   });
 
+  static FormerProvider of(BuildContext context, {bool listen = true}) =>
+      Provider.of(context, listen: listen);
+
   @override
   Widget build(BuildContext context) {
-    return Provider(
+    return ChangeNotifierProvider(
       create: (_) => FormerProvider(form(), schema()),
       child: child,
     );

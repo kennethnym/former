@@ -10,6 +10,9 @@ abstract class FormerSchema<TForm extends FormerForm> {
   /// Returns true if [form] is valid, false otherwise.
   bool validate(TForm form);
 
+  /// Retrieves the error message of [field]. Empty if [field] is valid.
+  String errorOf(FormerField field);
+
   @protected
   bool fieldIsValid(bool isValidated) => isValidated;
 }

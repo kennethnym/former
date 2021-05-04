@@ -4,7 +4,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:former/src/form_provider.dart';
+import 'package:former/src/former_provider.dart';
 import 'package:former/src/former_field.dart';
 import 'package:provider/provider.dart';
 

@@ -53,6 +53,20 @@ class MyFormSchema extends FormerSchema<_MyForm> {
   });
 
   @override
+  String errorOf(FormerField field) {
+    switch (field.value) {
+      case 0:
+        return username.error;
+
+      case 1:
+        return email.error;
+
+      default:
+        return '';
+    }
+  }
+
+  @override
   bool validate(_MyForm form) => [
         username.validate(form.username),
         email.validate(form.email),
