@@ -3,9 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'former_form.dart';
 
 /// Describes a field in [FormerForm].
-class FormerField {
+abstract class FormerField {
   @protected
-  const FormerField(this.fieldName);
+  const FormerField(this.value);
 
-  final String fieldName;
+  final int value;
 }

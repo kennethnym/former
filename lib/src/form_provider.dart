@@ -1,14 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:former/src/former_field.dart';
 import 'package:former/src/former_form.dart';
+import 'package:former/src/former_schema.dart';
 import 'package:provider/provider.dart';
 
 class FormerProvider extends ChangeNotifier {
   final FormerForm form;
 
+  final FormerSchema _schema;
+
   bool _isFormEnabled = true;
 
-  FormerProvider(this.form);
+  FormerProvider(this.form, this._schema);
 
   static FormerProvider of(BuildContext context, {bool listen = true}) =>
       Provider.of(context, listen: listen);
