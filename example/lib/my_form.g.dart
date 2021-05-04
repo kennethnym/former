@@ -6,7 +6,7 @@ part of 'my_form.dart';
 // Generator: FormableBuilder
 // **************************************************************************
 
-class MyForm extends MyFormBase implements FormerForm {
+mixin _$MyFormIndexable on _MyForm {
   @override
   dynamic operator [](FormerField field) {
     switch (field.value) {
@@ -32,7 +32,7 @@ class MyForm extends MyFormBase implements FormerForm {
   }
 }
 
-/// All fields of [MyForm]
+/// All fields of [_MyForm]
 class MyFormField extends FormerField {
   const MyFormField._(int value) : super(value);
 
@@ -42,7 +42,8 @@ class MyFormField extends FormerField {
   static const email = MyFormField._(1);
 }
 
-class MyFormSchema implements FormerSchema<MyForm> {
+/// A [FormerSchema] that [_MyForm] needs to conform to.
+class MyFormSchema implements FormerSchema<_MyForm> {
   final StringValidator username;
   final StringValidator email;
 
@@ -52,7 +53,7 @@ class MyFormSchema implements FormerSchema<MyForm> {
   });
 
   @override
-  bool validate(MyForm form) {
+  bool validate(_MyForm form) {
     var isValid = true;
 
     isValid = username.validate(form.username);
