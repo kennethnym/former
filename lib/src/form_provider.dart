@@ -27,6 +27,12 @@ class FormerProvider extends ChangeNotifier {
   void update({required FormerField field, required dynamic withValue}) {
     form[field] = withValue;
   }
+
+  /// Checks if the form is valid
+  Future<void> submit() {
+    final isValid = _schema.validate(form);
+    return isValid ? form.submit() : Future.value();
+  }
 }
 
 /// Automatically obtain the nearest [FormerProvider].

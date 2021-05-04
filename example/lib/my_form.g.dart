@@ -43,7 +43,7 @@ class MyFormField extends FormerField {
 }
 
 /// A [FormerSchema] that [_MyForm] needs to conform to.
-class MyFormSchema implements FormerSchema<_MyForm> {
+class MyFormSchema extends FormerSchema<_MyForm> {
   final StringValidator username;
   final StringValidator email;
 
@@ -53,12 +53,8 @@ class MyFormSchema implements FormerSchema<_MyForm> {
   });
 
   @override
-  bool validate(_MyForm form) {
-    var isValid = true;
-
-    isValid = username.validate(form.username);
-    isValid = email.validate(form.email);
-
-    return isValid;
-  }
+  bool validate(_MyForm form) => [
+        username.validate(form.username),
+        email.validate(form.email),
+      ].every(fieldIsValid);
 }

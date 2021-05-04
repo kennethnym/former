@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:former/src/former_field.dart';
 
 /// A form that will be consumed by [Former].
