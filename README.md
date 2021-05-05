@@ -120,3 +120,9 @@ whenever there are changes
 The form state is all stored in a `ChangeNotifier` that is provided by `ChangeNotifierProvider`.
 Therefore, it is possible to obtain the form and its state *without* using `former` widgets.
 You can always roll your own form components that consume the current form via `Former.of`.
+The provider provides the following:
+
+- `Former.of(context).form`, the current form. You can use it to retrieve the current value of a field,
+e.g. `form.username`
+- `Former.of(context).errorOf(field)` retrieves the error message of the given field
+- `Former.of(context).submit()` validates and submits the form.
