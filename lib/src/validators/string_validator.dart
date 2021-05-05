@@ -1,6 +1,6 @@
 import 'package:former/src/validators/validator.dart';
 
-class StringValidator implements Validator<String?> {
+class StringValidator implements Validator<String> {
   String _error = '';
 
   final _validators = <ValidatorFunc<String?>>[];

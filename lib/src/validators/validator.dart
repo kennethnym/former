@@ -1,6 +1,6 @@
 /// A function that validates [value]
 /// and returns error message if any, or an empty string.
-typedef ValidatorFunc<T> = String Function(T value);
+typedef ValidatorFunc<T> = String Function(T? value);
 
 abstract class Validator<T> {
   /// The error message as a result of a failed validation.
