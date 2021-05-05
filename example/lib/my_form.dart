@@ -17,6 +17,6 @@ abstract class _MyForm implements FormerForm {
   @override
   Future<void> submit() {
     // TODO: implement submit
-    throw UnimplementedError();
+    return Future.value();
   }
 }

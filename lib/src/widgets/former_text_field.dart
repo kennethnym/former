@@ -4,10 +4,14 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:former/former.dart';
 import 'package:former/src/former_provider.dart';
 import 'package:former/src/former_field.dart';
 import 'package:provider/provider.dart';
 
+/// A normal [TextField] that
+///   - updates the value of the given field in the form whenever it changes.
+///   - follows whether the form is enabled (can override in constructor)
 class FormerTextField extends StatefulWidget {
   final FormerField field;
 
@@ -62,6 +66,12 @@ class FormerTextField extends StatefulWidget {
   final Iterable<String>? autofillHints;
   final String? restorationId;
 
+  /// Creates a text field that consumes the [FormerForm] in context.
+  ///
+  /// By default, the enabled state of this field follows that of [FormerForm].
+  /// This can be overridden with the [enabled] option.
+  ///
+  /// This constructor mirrors all the options for the [TextField] widget.
   const FormerTextField({
     required this.field,
     Key? key,

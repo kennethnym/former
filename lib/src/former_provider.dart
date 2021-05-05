@@ -23,6 +23,9 @@ class FormerProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Retrieves the error message of [field]. Empty if [field] is valid.
+  String errorOf(FormerField field) => _schema.errorOf(field);
+
   /// Updates [field] of [FormerProvider.form] with [withValue].
   void update({required FormerField field, required dynamic withValue}) {
     form[field] = withValue;
@@ -31,7 +34,11 @@ class FormerProvider extends ChangeNotifier {
   /// Checks if the form is valid
   Future<void> submit() {
     final isValid = _schema.validate(form);
-    return isValid ? form.submit() : Future.value();
+    if (!isValid) {
+      notifyListeners();
+      return Future.value();
+    }
+    return form.submit();
   }
 }
 

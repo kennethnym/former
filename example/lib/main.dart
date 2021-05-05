@@ -40,7 +40,9 @@ class _Form extends StatelessWidget {
     return Column(
       children: [
         FormerTextField(field: MyFormField.username),
+        FormerError(field: MyFormField.username),
         FormerTextField(field: MyFormField.email),
+        FormerError(field: MyFormField.email),
         ElevatedButton(
           onPressed: () {
             Former.of(context, listen: false).submit();
