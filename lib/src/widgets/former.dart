@@ -5,12 +5,12 @@ import 'package:provider/provider.dart';
 
 import '../former_form.dart';
 
-typedef FormCreator = FormerForm Function();
+typedef FormCreator<F extends FormerForm> = F Function();
 typedef SchemaCreator = FormerSchema Function();
 
-class Former extends StatelessWidget {
+class Former<TForm extends FormerForm> extends StatelessWidget {
   /// A function that creates a [FormerForm].
-  final FormCreator form;
+  final FormCreator<TForm> form;
 
   final SchemaCreator schema;
 
@@ -22,13 +22,14 @@ class Former extends StatelessWidget {
     required this.child,
   });
 
-  static FormerProvider of(BuildContext context, {bool listen = true}) =>
-      Provider.of(context, listen: listen);
+  static FormerProvider<TForm> of<TForm extends FormerForm>(BuildContext context,
+          {bool listen = true}) =>
+      Provider.of<FormerProvider<TForm>>(context, listen: listen);
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => FormerProvider(form(), schema()),
+      create: (_) => FormerProvider<TForm>(form(), schema()),
       child: child,
     );
   }

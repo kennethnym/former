@@ -16,7 +16,7 @@ class FormerExampleApp extends StatelessWidget {
       title: 'Former example',
       home: Scaffold(
         body: SafeArea(
-          child: Former(
+          child: Former<MyForm>(
             form: () => MyForm(),
             schema: () => MyFormSchema(
               username: StringValidator()

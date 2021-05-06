@@ -4,8 +4,8 @@ import 'package:former/src/former_form.dart';
 import 'package:former/src/former_schema.dart';
 import 'package:provider/provider.dart';
 
-class FormerProvider extends ChangeNotifier {
-  final FormerForm form;
+class FormerProvider<TForm extends FormerForm> extends ChangeNotifier {
+  final TForm form;
 
   final FormerSchema _schema;
 
