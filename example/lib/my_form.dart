@@ -11,6 +11,8 @@ abstract class _MyForm implements FormerForm {
   String username = '';
   String email = '';
 
+  int age = 0;
+
   @FormableIgnore()
   String ignored = '';
 
@@ -19,4 +21,10 @@ abstract class _MyForm implements FormerForm {
     // TODO: implement submit
     return Future.value();
   }
+
+  Map<String, dynamic> toJson() => {
+        'username': username,
+        'email': email,
+        'age': age,
+      };
 }

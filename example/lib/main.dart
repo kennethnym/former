@@ -23,6 +23,9 @@ class FormerExampleApp extends StatelessWidget {
                 ..min(10)
                 ..max(50),
               email: StringValidator()..email(),
+              age: NumberValidator()
+                ..min(1)
+                ..max(150),
             ),
             child: _Form(),
           ),
@@ -32,17 +35,43 @@ class FormerExampleApp extends StatelessWidget {
   }
 }
 
-class _Form extends StatelessWidget {
+class _Form extends StatefulWidget {
   const _Form();
+
+  @override
+  __FormState createState() => __FormState();
+}
+
+class __FormState extends State<_Form> {
+  bool _isFormEnabled = true;
+
+  void _toggleForm(bool isEnabled) {
+    Former.of(context, listen: false).isFormEnabled = isEnabled;
+    setState(() {
+      _isFormEnabled = isEnabled;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text('enable form?'),
+            Switch(
+              value: _isFormEnabled,
+              onChanged: _toggleForm,
+            ),
+          ],
+        ),
         FormerTextField(field: MyFormField.username),
         FormerError(field: MyFormField.username),
         FormerTextField(field: MyFormField.email),
         FormerError(field: MyFormField.email),
+        FormerSlider(field: MyFormField.age),
+        FormerError(field: MyFormField.age),
         ElevatedButton(
           onPressed: () {
             Former.of(context, listen: false).submit();

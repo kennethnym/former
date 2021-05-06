@@ -11,4 +11,5 @@ export 'src/former_schema.dart';
 // widgets for consuming forms
 export 'src/widgets/former.dart';
 export 'src/widgets/former_text_field.dart';
+export 'src/widgets/former_slider.dart';
 export 'src/widgets/former_error.dart';
