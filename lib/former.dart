@@ -13,3 +13,4 @@ export 'src/widgets/former.dart';
 export 'src/widgets/former_text_field.dart';
 export 'src/widgets/former_slider.dart';
 export 'src/widgets/former_error.dart';
+export 'src/widgets/former_checkbox.dart';
