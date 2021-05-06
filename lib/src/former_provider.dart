@@ -43,7 +43,7 @@ class FormerProvider extends ChangeNotifier {
 }
 
 /// Automatically obtain the nearest [FormerProvider].
-mixin FormProviderMixin<T extends StatefulWidget> on State<T> {
+mixin FormerProviderMixin<T extends StatefulWidget> on State<T> {
   @protected
   late final FormerProvider formProvider;
 

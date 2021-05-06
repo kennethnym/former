@@ -132,7 +132,7 @@ class FormerTextField extends StatefulWidget {
 }
 
 class _FormerTextFieldState extends State<FormerTextField>
-    with FormProviderMixin {
+    with FormerProviderMixin {
   late final TextEditingController _controller;
 
   @override
@@ -140,6 +140,16 @@ class _FormerTextFieldState extends State<FormerTextField>
     super.initState();
 
     final initialValue = formProvider.form[widget.field];
+
+    assert(
+      initialValue is String ||
+          (initialValue is num &&
+              widget.keyboardType == TextInputType.number) ||
+          initialValue is String?,
+      '${widget.field} is not a string or a number, but FormerTextField is used to control the field. '
+      'FormerTextField can only control text fields or'
+      'number fields when keyboardType is set to TextInputType.number or TextInputType.numberWithOptions.',
+    );
 
     _controller = widget.controller ?? TextEditingController();
     _controller
