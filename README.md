@@ -22,6 +22,7 @@ This is where `former` comes in.
 - Declarative form validation
 - Automatic value tracking via `Former` widgets
 - Easy error handling with `FormerError` widget.
+- Type-safe access of form.
 
 ## Example
 
@@ -79,7 +80,7 @@ MaterialApp(
   title: 'Former example',
   home: Scaffold(
     body: SafeArea(
-      child: Former(
+      child: Former<MyForm>(
         form: () => MyForm(),
         schema: () => MyFormSchema(
           username: StringValidator()
@@ -119,10 +120,10 @@ whenever there are changes
 
 The form state is all stored in a `ChangeNotifier` that is provided by `ChangeNotifierProvider`.
 Therefore, it is possible to obtain the form and its state *without* using `former` widgets.
-You can always roll your own form components that consume the current form via `Former.of`.
+You can always roll your own form components that consume the current form via `Former.of<TForm extends FormerForm>`.
 The provider provides the following:
 
-- `Former.of(context).form`, the current form. You can use it to retrieve the current value of a field,
+- `Former.of<MyForm>(context).form`, the current form. You can use it to retrieve the current value of a field,
 e.g. `form.username`
-- `Former.of(context).errorOf(field)` retrieves the error message of the given field
-- `Former.of(context).submit()` validates and submits the form.
+- `Former.of<MyForm>(context).errorOf(field)` retrieves the error message of the given field
+- `Former.of<MyForm>(context).submit()` validates and submits the form.
