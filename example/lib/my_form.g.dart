@@ -18,6 +18,12 @@ mixin _$MyFormIndexable on _MyForm {
 
       case 2:
         return age;
+
+      case 3:
+        return shouldSendNewsletter;
+
+      case 4:
+        return shouldEnableAnalytics;
     }
   }
 
@@ -35,6 +41,14 @@ mixin _$MyFormIndexable on _MyForm {
       case 2:
         age = newValue;
         break;
+
+      case 3:
+        shouldSendNewsletter = newValue;
+        break;
+
+      case 4:
+        shouldEnableAnalytics = newValue;
+        break;
     }
   }
 }
@@ -43,11 +57,19 @@ mixin _$MyFormIndexable on _MyForm {
 class MyFormField extends FormerField {
   const MyFormField._(int value) : super(value);
 
-  static const all = [username, email, age];
+  static const all = [
+    username,
+    email,
+    age,
+    shouldSendNewsletter,
+    shouldEnableAnalytics
+  ];
 
   static const username = MyFormField._(0);
   static const email = MyFormField._(1);
   static const age = MyFormField._(2);
+  static const shouldSendNewsletter = MyFormField._(3);
+  static const shouldEnableAnalytics = MyFormField._(4);
 }
 
 /// A [FormerSchema] that [_MyForm] needs to conform to.
@@ -55,11 +77,15 @@ class MyFormSchema extends FormerSchema<_MyForm> {
   final StringValidator username;
   final StringValidator email;
   final NumberValidator age;
+  final BoolValidator shouldSendNewsletter;
+  final BoolValidator shouldEnableAnalytics;
 
   const MyFormSchema({
     required this.username,
     required this.email,
     required this.age,
+    required this.shouldSendNewsletter,
+    required this.shouldEnableAnalytics,
   });
 
   @override
@@ -74,6 +100,12 @@ class MyFormSchema extends FormerSchema<_MyForm> {
       case 2:
         return age.error;
 
+      case 3:
+        return shouldSendNewsletter.error;
+
+      case 4:
+        return shouldEnableAnalytics.error;
+
       default:
         return '';
     }
@@ -84,5 +116,7 @@ class MyFormSchema extends FormerSchema<_MyForm> {
         username.validate(form.username),
         email.validate(form.email),
         age.validate(form.age),
+        shouldSendNewsletter.validate(form.shouldSendNewsletter),
+        shouldEnableAnalytics.validate(form.shouldEnableAnalytics),
       ].every(fieldIsValid);
 }

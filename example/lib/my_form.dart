@@ -10,15 +10,16 @@ class MyForm = _MyForm with _$MyFormIndexable;
 abstract class _MyForm implements FormerForm {
   String username = '';
   String email = '';
-
-  int age = 0;
+  int age = 1;
+  bool shouldSendNewsletter = false;
+  bool shouldEnableAnalytics = false;
 
   @FormableIgnore()
   String ignored = '';
 
   @override
   Future<void> submit() {
-    // TODO: implement submit
+    print(toJson());
     return Future.value();
   }
 
@@ -26,5 +27,7 @@ abstract class _MyForm implements FormerForm {
         'username': username,
         'email': email,
         'age': age,
+        'shouldSendNewsletter': shouldSendNewsletter,
+        'shouldEnableAnalytics': shouldEnableAnalytics,
       };
 }

@@ -13,7 +13,9 @@ class FormerProvider<TForm extends FormerForm> extends ChangeNotifier {
 
   FormerProvider(this.form, this._schema);
 
-  static FormerProvider of(BuildContext context, {bool listen = true}) =>
+  static FormerProvider<TForm> of<TForm extends FormerForm>(
+          BuildContext context,
+          {bool listen = true}) =>
       Provider.of(context, listen: listen);
 
   bool get isFormEnabled => _isFormEnabled;
@@ -39,17 +41,5 @@ class FormerProvider<TForm extends FormerForm> extends ChangeNotifier {
       return Future.value();
     }
     return form.submit();
-  }
-}
-
-/// Automatically obtain the nearest [FormerProvider].
-mixin FormerProviderMixin<T extends StatefulWidget> on State<T> {
-  @protected
-  late final FormerProvider formProvider;
-
-  @override
-  void initState() {
-    super.initState();
-    formProvider = FormerProvider.of(context, listen: false);
   }
 }

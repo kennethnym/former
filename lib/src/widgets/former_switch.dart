@@ -4,7 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:former/former.dart';
 import 'package:provider/provider.dart';
 
-class FormerSwitch extends StatefulWidget {
+class FormerSwitch<TForm extends FormerForm> extends StatefulWidget {
   final FormerField field;
   final bool? enabled;
 
@@ -54,23 +54,26 @@ class FormerSwitch extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _FormerSwitchState createState() => _FormerSwitchState();
+  _FormerSwitchState<TForm> createState() => _FormerSwitchState();
 }
 
-class _FormerSwitchState extends State<FormerSwitch> with FormerProviderMixin {
+class _FormerSwitchState<F extends FormerForm> extends State<FormerSwitch> {
+  late final FormerProvider<F> _formProvider;
   late bool _isSwitchedOn;
 
   void _toggleSwitch(bool isOn) {
     setState(() {
       _isSwitchedOn = isOn;
     });
+    _formProvider.update(field: widget.field, withValue: isOn);
   }
 
   @override
   void initState() {
     super.initState();
 
-    final initialValue = formProvider.form[widget.field];
+    _formProvider = Former.of(context, listen: false);
+    final initialValue = _formProvider.form[widget.field];
 
     assert(
       initialValue is bool,
@@ -84,7 +87,7 @@ class _FormerSwitchState extends State<FormerSwitch> with FormerProviderMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Selector<FormerProvider, bool>(
+    return Selector<FormerProvider<F>, bool>(
       selector: (_, provider) => provider.isFormEnabled,
       builder: (_, isFormEnabled, __) => Switch(
         value: _isSwitchedOn,

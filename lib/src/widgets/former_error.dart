@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 
 /// A widget that shows an error message of a given field.
 /// If there is no error message an empty [Container] is built.
-class FormerError extends StatelessWidget {
+class FormerError<TForm extends FormerForm> extends StatelessWidget {
   final Widget? child;
   final FormerField field;
 
@@ -51,7 +51,7 @@ class FormerError extends StatelessWidget {
     final child = this.child;
     if (child != null) return child;
 
-    return Selector<FormerProvider, String>(
+    return Selector<FormerProvider<TForm>, String>(
       selector: (_, provider) => provider.errorOf(field),
       builder: (_, error, __) => Text(
         error,

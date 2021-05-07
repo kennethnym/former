@@ -12,7 +12,7 @@ import 'package:provider/provider.dart';
 /// A normal [TextField] that
 ///   - updates the value of the given field in the form whenever it changes.
 ///   - follows whether the form is enabled (can override in constructor)
-class FormerTextField extends StatefulWidget {
+class FormerTextField<TForm extends FormerForm> extends StatefulWidget {
   final FormerField field;
 
   final TextEditingController? controller;
@@ -128,17 +128,18 @@ class FormerTextField extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _FormerTextFieldState createState() => _FormerTextFieldState();
+  _FormerTextFieldState<TForm> createState() => _FormerTextFieldState();
 }
 
-class _FormerTextFieldState extends State<FormerTextField>
-    with FormerProviderMixin {
+class _FormerTextFieldState<F extends FormerForm>
+    extends State<FormerTextField> {
   late final TextEditingController _controller;
 
   @override
   void initState() {
     super.initState();
 
+    final formProvider = Former.of<F>(context, listen: false);
     final initialValue = formProvider.form[widget.field];
 
     assert(
@@ -164,7 +165,7 @@ class _FormerTextFieldState extends State<FormerTextField>
 
   @override
   Widget build(BuildContext context) {
-    return Selector<FormerProvider, bool>(
+    return Selector<FormerProvider<F>, bool>(
       selector: (_, provider) => provider.isFormEnabled,
       builder: (_, isFormEnabled, __) => TextField(
         key: widget.key,

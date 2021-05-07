@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 /// A normal [Slider] that:
 ///   - controls the given field
 ///   - follows whether the form is enabled (can override in constructor)
-class FormerSlider extends StatefulWidget {
+class FormerSlider<TForm extends FormerForm> extends StatefulWidget {
   final FormerField field;
   final bool? enabled;
 
@@ -46,10 +46,11 @@ class FormerSlider extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _FormerSliderState createState() => _FormerSliderState();
+  _FormerSliderState<TForm> createState() => _FormerSliderState();
 }
 
-class _FormerSliderState extends State<FormerSlider> with FormerProviderMixin {
+class _FormerSliderState<F extends FormerForm> extends State<FormerSlider> {
+  late final FormerProvider<F> _formProvider;
   late num _value;
 
   /// Whether the field is an integer field.
@@ -61,7 +62,7 @@ class _FormerSliderState extends State<FormerSlider> with FormerProviderMixin {
   late final bool _isInt;
 
   void _updateValue(double newValue) {
-    formProvider.update(
+    _formProvider.update(
       field: widget.field,
       withValue: _isInt ? newValue.toInt() : newValue,
     );
@@ -82,7 +83,8 @@ class _FormerSliderState extends State<FormerSlider> with FormerProviderMixin {
   void initState() {
     super.initState();
 
-    final initialValue = formProvider.form[widget.field];
+    _formProvider = Former.of(context, listen: false);
+    final initialValue = _formProvider.form[widget.field];
 
     _isInt = initialValue is int || initialValue is int?;
 
@@ -97,7 +99,7 @@ class _FormerSliderState extends State<FormerSlider> with FormerProviderMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Selector<FormerProvider, bool>(
+    return Selector<FormerProvider<F>, bool>(
       selector: (_, provider) => provider.isFormEnabled,
       builder: (_, isFormEnabled, __) => Slider(
         value: _value.toDouble(),

@@ -3,7 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:former/former.dart';
 import 'package:provider/provider.dart';
 
-class FormerCheckbox extends StatefulWidget {
+class FormerCheckbox<TForm extends FormerForm> extends StatefulWidget {
   final FormerField field;
   final bool? enabled;
 
@@ -45,20 +45,26 @@ class FormerCheckbox extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _FormerCheckboxState createState() => _FormerCheckboxState();
+  _FormerCheckboxState<TForm> createState() => _FormerCheckboxState();
 }
 
-class _FormerCheckboxState extends State<FormerCheckbox>
-    with FormerProviderMixin {
-  late bool _isChecked;
+class _FormerCheckboxState<F extends FormerForm> extends State<FormerCheckbox> {
+  late final FormerProvider<F> _formProvider;
+  late bool? _isChecked;
 
-  void _toggle(bool? checked) {}
+  void _toggle(bool? checked) {
+    setState(() {
+      _isChecked = checked;
+    });
+    _formProvider.update(field: widget.field, withValue: checked);
+  }
 
   @override
   void initState() {
     super.initState();
 
-    final initialValue = formProvider.form[widget.field];
+    _formProvider = Former.of(context, listen: false);
+    final initialValue = _formProvider.form[widget.field];
 
     assert(
       (!widget.tristate && initialValue is bool) ||
@@ -68,11 +74,13 @@ class _FormerCheckboxState extends State<FormerCheckbox>
       'If ${widget.field} is a bool, then FormerCheckbox.tristate must be disabled.\n'
       'Otherwise, you should use a Former control that is compatible with the type of ${widget.field}.',
     );
+
+    _isChecked = initialValue;
   }
 
   @override
   Widget build(BuildContext context) {
-    return Selector<FormerProvider, bool>(
+    return Selector<FormerProvider<F>, bool>(
       selector: (_, provider) => provider.isFormEnabled,
       builder: (_, isFormEnabled, __) => Checkbox(
         value: _isChecked,
