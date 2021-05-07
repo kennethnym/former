@@ -1,23 +1,66 @@
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:former/former.dart';
+import 'package:former/src/validators/bool_validator.dart';
+import 'package:former/src/validators/number_validator.dart';
+import 'package:former/src/validators/string_validator.dart';
+import 'package:mockito/mockito.dart';
 
 import 'test_form.dart';
 
+/// A callable class that is used as a test listener to [FormerProvider].
+class _TestProviderListener extends Mock {
+  void call();
+}
+
 void main() {
+  const field1Error = 'is empty';
+  const field2Error = 'is negative';
+  const field3Error = 'does not exist';
+
   late TestForm testForm;
   late TestFormSchema schema;
   late FormerProvider<TestForm> provider;
 
-  setUpAll(() {
+  setUp(() {
     testForm = TestForm();
-    schema = TestFormSchema();
+    schema = TestFormSchema(
+      field1: StringMust()..notBeEmpty(field1Error),
+      field2: NumberMust()..bePositive(field2Error),
+      field3: BoolMust()..exist(field3Error),
+    );
     provider = FormerProvider(testForm, schema);
   });
 
   group('FormerProvider', () {
     test('should contain the given form', () {
       expect(provider.form, equals(testForm));
+    });
+
+    test('should enable form by default', () {
+      expect(provider.isFormEnabled, isTrue);
+    });
+
+    test('should notify listeners when enabled state is changed', () {
+      final listener = _TestProviderListener();
+
+      provider
+        ..addListener(listener)
+        ..isFormEnabled = false;
+
+      verify(listener()).called(1);
+    });
+
+    test('should have no error message before validation is performed', () {
+      for (final field in TestFormField.all) {
+        expect(provider.errorOf(field), isEmpty);
+      }
+    });
+
+    test('should update field correctly', () {
+      const field1NewValue = '123';
+      provider.update(field: TestFormField.field1, withValue: field1NewValue);
+      expect(provider.form.field1, field1NewValue);
     });
   });
 }

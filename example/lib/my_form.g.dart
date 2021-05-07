@@ -9,6 +9,13 @@ part of 'my_form.dart';
 mixin _$MyFormIndexable on _MyForm {
   @override
   dynamic operator [](FormerField field) {
+    if (field is! MyFormField) {
+      throw ArgumentError(
+        '$field cannot be used to index MyForm'
+        'Do you mean to use MyFormField instead?',
+      );
+    }
+
     switch (field.value) {
       case 0:
         return username;
@@ -29,6 +36,13 @@ mixin _$MyFormIndexable on _MyForm {
 
   @override
   void operator []=(FormerField field, dynamic newValue) {
+    if (field is! MyFormField) {
+      throw ArgumentError(
+        '$field cannot be used to index MyForm'
+        'Do you mean to use MyFormField instead?',
+      );
+    }
+
     switch (field.value) {
       case 0:
         username = newValue;
@@ -90,6 +104,13 @@ class MyFormSchema extends FormerSchema<_MyForm> {
 
   @override
   String errorOf(FormerField field) {
+    if (field is! MyFormField) {
+      throw ArgumentError(
+        '$field cannot be used to access MyForm.'
+        'Do you mean to use MyFormField instead?',
+      );
+    }
+
     switch (field.value) {
       case 0:
         return username.error;
