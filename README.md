@@ -63,10 +63,10 @@ requirement of the field:
 
 ```dart
 MyFormSchema(
-  username: StringValidator()
-    ..min(10)
-    ..max(50),
-  email: StringValidator()..email(),
+  username: StringMust()
+    ..hasMinLength(10)
+    ..hasMaxLength(50),
+  email: StringMust()..beAnEmail(),
 );
 ```
 
@@ -83,10 +83,10 @@ MaterialApp(
       child: Former<MyForm>(
         form: () => MyForm(),
         schema: () => MyFormSchema(
-          username: StringValidator()
-            ..min(10)
-            ..max(50),
-          email: StringValidator()..email(),
+          username: StringMust()
+            ..hasMinLength(10)
+            ..hasMaxLength(50),
+          email: StringMust()..beAnEmail(),
         ),
         child: _Form(),
       ),

@@ -1,6 +1,6 @@
 import 'validator.dart';
 
-class BoolValidator implements Validator<bool> {
+class BoolMust implements Validator<bool> {
   String _error = '';
 
   @override

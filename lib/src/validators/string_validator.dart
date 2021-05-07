@@ -1,6 +1,6 @@
 import 'package:former/src/validators/validator.dart';
 
-class StringValidator implements Validator<String> {
+class StringMust implements Validator<String> {
   String _error = '';
 
   final _validators = <ValidatorFunc<String?>>[];
@@ -22,9 +22,9 @@ class StringValidator implements Validator<String> {
     return true;
   }
 
-  /// Instructs [StringValidator] to check
+  /// Instructs [StringMust] to check
   /// whether the given value matches [pattern].
-  void matches(RegExp pattern, [String? errorMessage]) {
+  void match(RegExp pattern, [String? errorMessage]) {
     final err = errorMessage ?? 'String does not match pattern $pattern';
     _validators.add((value) {
       if (value == null) return err;
@@ -34,8 +34,8 @@ class StringValidator implements Validator<String> {
     });
   }
 
-  /// Instructs [StringValidator] to make sure the given string is not empty.
-  void notEmpty([String? errorMessage]) {
+  /// Instructs [StringMust] to make sure the given string is not empty.
+  void notBeEmpty([String? errorMessage]) {
     _validators.add(
       (value) => value == null || value.isEmpty
           ? errorMessage ?? 'String is empty or is null'
@@ -43,18 +43,18 @@ class StringValidator implements Validator<String> {
     );
   }
 
-  /// Instructs [StringValidator] to make sure the given string is a valid email.
+  /// Instructs [StringMust] to make sure the given string is a valid email.
   /// Note that this is just a simple regex check from ihateregex.io that
   /// should cover most use cases. The backend should be responsible for
   /// anything more complicated.
-  void email([String? errorMessage]) {
-    matches(RegExp('[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+'),
+  void beAnEmail([String? errorMessage]) {
+    match(RegExp('[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+'),
         errorMessage ?? 'The string is not a valid email address.');
   }
 
-  /// Instructs [StringValidator] to make sure the given string
+  /// Instructs [StringMust] to make sure the given string
   /// is at least [len] characters long.
-  void min(int len, [String? errorMessage]) {
+  void hasMinLength(int len, [String? errorMessage]) {
     _validators.add((value) {
       if (value == null || value.length < len)
         return errorMessage ?? 'String is shorter than $len.';
@@ -62,9 +62,9 @@ class StringValidator implements Validator<String> {
     });
   }
 
-  /// Instructs [StringValidator] to make sure the given string
+  /// Instructs [StringMust] to make sure the given string
   /// is at most [len] characters long.
-  void max(int len, [String? errorMessage]) {
+  void hasMaxLength(int len, [String? errorMessage]) {
     _validators.add((value) {
       if (value == null || value.length > len)
         return errorMessage ?? 'String is longer than $len.';

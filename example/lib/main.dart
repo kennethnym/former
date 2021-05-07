@@ -19,15 +19,15 @@ class FormerExampleApp extends StatelessWidget {
           child: Former<MyForm>(
             form: () => MyForm(),
             schema: () => MyFormSchema(
-              username: StringValidator()
-                ..min(10)
-                ..max(50),
-              email: StringValidator()..email(),
-              age: NumberValidator()
-                ..min(1)
-                ..max(150),
-              shouldEnableAnalytics: BoolValidator()..exist(),
-              shouldSendNewsletter: BoolValidator()..exist(),
+              username: StringMust()
+                ..hasMinLength(10)
+                ..hasMaxLength(50),
+              email: StringMust()..beAnEmail(),
+              age: NumberMust()
+                ..beAtLeast(1)
+                ..beAtMost(150),
+              shouldEnableAnalytics: BoolMust()..exist(),
+              shouldSendNewsletter: BoolMust()..exist(),
             ),
             child: _Form(),
           ),

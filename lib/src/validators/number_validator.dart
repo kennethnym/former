@@ -1,6 +1,6 @@
 import 'validator.dart';
 
-class NumberValidator implements Validator {
+class NumberMust implements Validator {
   String _error = '';
 
   final _validators = <ValidatorFunc<num>>[];
@@ -20,9 +20,9 @@ class NumberValidator implements Validator {
     return true;
   }
 
-  /// Instructs [NumberValidator] to make sure the given number
+  /// Instructs [NumberMust] to make sure the given number
   /// is an integer, i.e. no decimal places.
-  void isInteger([String? errorMessage]) {
+  void beInteger([String? errorMessage]) {
     _validators.add((value) {
       if (value == null || value is! int)
         return errorMessage ?? 'The number is not an integer.';
@@ -30,9 +30,9 @@ class NumberValidator implements Validator {
     });
   }
 
-  /// Instructs [NumberValidator] to make sure the given number
+  /// Instructs [NumberMust] to make sure the given number
   /// is not smaller than [min].
-  void min(num min, [String? errorMessage]) {
+  void beAtLeast(num min, [String? errorMessage]) {
     _validators.add((value) {
       if (value == null || value < min)
         return errorMessage ?? 'Number is smaller than $min.';
@@ -40,9 +40,9 @@ class NumberValidator implements Validator {
     });
   }
 
-  /// Instructs [NumberValidator] to make sure the given number
+  /// Instructs [NumberMust] to make sure the given number
   /// is not bigger than [max].
-  void max(num max, [String? errorMessage]) {
+  void beAtMost(num max, [String? errorMessage]) {
     _validators.add((value) {
       if (value == null || value > max)
         return errorMessage ?? 'Number is larger than $max.';
@@ -50,21 +50,21 @@ class NumberValidator implements Validator {
     });
   }
 
-  /// Instructs [NumberValidator] to make sure the given number
+  /// Instructs [NumberMust] to make sure the given number
   /// is positive.
-  void isPositive([String? errorMessage]) {
-    min(0, errorMessage);
+  void bePositive([String? errorMessage]) {
+    beAtLeast(0, errorMessage);
   }
 
-  /// Instructs [NumberValidator] to make sure the given number
+  /// Instructs [NumberMust] to make sure the given number
   /// is negative.
-  void isNegative([String? errorMessage]) {
-    min(-1, errorMessage);
+  void beNegative([String? errorMessage]) {
+    beAtLeast(-1, errorMessage);
   }
 
-  /// Instructs [NumberValidator] to make sure the given number
+  /// Instructs [NumberMust] to make sure the given number
   /// is within the range [min] and [max], both end inclusive.
-  void within(num min, num max, [String? errorMessage]) {
+  void beWithin(num min, num max, [String? errorMessage]) {
     _validators.add((value) {
       if (value == null || value < min || value > max)
         return errorMessage ?? 'Number is not within $min and $max';

@@ -74,11 +74,11 @@ class MyFormField extends FormerField {
 
 /// A [FormerSchema] that [_MyForm] needs to conform to.
 class MyFormSchema extends FormerSchema<_MyForm> {
-  final StringValidator username;
-  final StringValidator email;
-  final NumberValidator age;
-  final BoolValidator shouldSendNewsletter;
-  final BoolValidator shouldEnableAnalytics;
+  final StringMust username;
+  final StringMust email;
+  final NumberMust age;
+  final BoolMust shouldSendNewsletter;
+  final BoolMust shouldEnableAnalytics;
 
   const MyFormSchema({
     required this.username,
