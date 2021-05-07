@@ -38,7 +38,7 @@ class BoolMust implements Validator<bool> {
 
   void beFalse([String? errorMessage]) {
     _validators.add((value) {
-      if (value == null || !value)
+      if (value == null || value)
         return errorMessage ?? 'The boolean is not false.';
       return '';
     });
