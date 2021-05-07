@@ -1,9 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:former/former.dart';
-import 'package:former/src/validators/bool_validator.dart';
-import 'package:former/src/validators/number_validator.dart';
-import 'package:former/src/validators/string_validator.dart';
 import 'package:mockito/mockito.dart';
 
 import 'test_form.dart';
@@ -14,21 +11,13 @@ class _TestProviderListener extends Mock {
 }
 
 void main() {
-  const field1Error = 'is empty';
-  const field2Error = 'is negative';
-  const field3Error = 'does not exist';
-
   late TestForm testForm;
   late TestFormSchema schema;
   late FormerProvider<TestForm> provider;
 
   setUp(() {
     testForm = TestForm();
-    schema = TestFormSchema(
-      field1: StringMust()..notBeEmpty(field1Error),
-      field2: NumberMust()..bePositive(field2Error),
-      field3: BoolMust()..exist(field3Error),
-    );
+    schema = testSchema;
     provider = FormerProvider(testForm, schema);
   });
 

@@ -81,3 +81,13 @@ class TestFormSchema extends FormerSchema<TestForm> {
         field3.validate(form.field3),
       ].every(fieldIsValid);
 }
+
+const field1Error = 'is empty';
+const field2Error = 'is negative';
+const field3Error = 'does not exist';
+
+final testSchema = TestFormSchema(
+  field1: StringMust()..notBeEmpty(field1Error),
+  field2: NumberMust()..bePositive(field2Error),
+  field3: BoolMust()..exist(field3Error),
+);
