@@ -10,5 +10,5 @@ abstract class Validator<T> {
   String get error;
 
   /// Validates [value]. Returns whether the value is valid.
-  bool validate(T value);
+  bool validate(T? value);
 }

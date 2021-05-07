@@ -9,7 +9,7 @@ class BoolMust implements Validator<bool> {
   final _validators = <ValidatorFunc<bool?>>[];
 
   @override
-  bool validate(value) {
+  bool validate(bool? value) {
     for (final validator in _validators) {
       final err = validator(value);
       if (err.isNotEmpty) {
