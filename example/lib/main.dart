@@ -26,6 +26,8 @@ class FormerExampleApp extends StatelessWidget {
               age: NumberValidator()
                 ..min(1)
                 ..max(150),
+              shouldEnableAnalytics: BoolValidator()..exist(),
+              shouldSendNewsletter: BoolValidator()..exist(),
             ),
             child: _Form(),
           ),
@@ -66,15 +68,19 @@ class __FormState extends State<_Form> {
             ),
           ],
         ),
-        FormerTextField(field: MyFormField.username),
-        FormerError(field: MyFormField.username),
-        FormerTextField(field: MyFormField.email),
-        FormerError(field: MyFormField.email),
-        FormerSlider(field: MyFormField.age),
-        FormerError(field: MyFormField.age),
+        FormerTextField<MyForm>(field: MyFormField.username),
+        FormerError<MyForm>(field: MyFormField.username),
+        FormerTextField<MyForm>(field: MyFormField.email),
+        FormerError<MyForm>(field: MyFormField.email),
+        FormerSlider<MyForm>(field: MyFormField.age, min: 1, max: 100),
+        FormerError<MyForm>(field: MyFormField.age),
+        FormerCheckbox<MyForm>(field: MyFormField.shouldEnableAnalytics),
+        FormerError<MyForm>(field: MyFormField.shouldEnableAnalytics),
+        FormerSwitch<MyForm>(field: MyFormField.shouldSendNewsletter),
+        FormerError<MyForm>(field: MyFormField.shouldSendNewsletter),
         ElevatedButton(
           onPressed: () {
-            Former.of(context, listen: false).submit();
+            Former.of<MyForm>(context, listen: false).submit();
           },
           child: Text('submit'),
         ),
