@@ -36,7 +36,7 @@ dev_dependencies:
     sdk: flutter
 
   former_gen:
-    path: ../../former_gen
+    git: https://github.com/kennethnym/former_gen.git
 
   build_runner:
 
