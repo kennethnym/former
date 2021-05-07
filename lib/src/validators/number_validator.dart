@@ -60,7 +60,12 @@ class NumberMust implements Validator<num> {
   /// Instructs [NumberMust] to make sure the given number
   /// is negative.
   void beNegative([String? errorMessage]) {
-    beAtLeast(-1, errorMessage);
+    _validators.add((value) {
+      if (value == null || value >= 0) {
+        return errorMessage ?? 'Number is not negative';
+      }
+      return '';
+    });
   }
 
   /// Instructs [NumberMust] to make sure the given number
