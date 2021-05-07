@@ -210,9 +210,11 @@ packages:
   former_gen:
     dependency: "direct dev"
     description:
-      path: "../../former_gen"
-      relative: true
-    source: path
+      path: "."
+      ref: HEAD
+      resolved-ref: "942c172346734b6900aac1e0270a9806d51afd56"
+      url: "https://github.com/kennethnym/former_gen.git"
+    source: git
     version: "0.0.1"
   frontend_server_client:
     dependency: transitive
