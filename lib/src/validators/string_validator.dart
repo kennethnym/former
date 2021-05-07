@@ -3,7 +3,7 @@ import 'package:former/src/validators/validator.dart';
 class StringMust implements Validator<String> {
   String _error = '';
 
-  final _validators = <ValidatorFunc<String?>>[];
+  final _validators = <ValidatorFunc<String>>[];
 
   // The error message as a result of a previous validation.
   @override

@@ -6,7 +6,7 @@ class BoolMust implements Validator<bool> {
   @override
   String get error => _error;
 
-  final _validators = <ValidatorFunc<bool?>>[];
+  final _validators = <ValidatorFunc<bool>>[];
 
   @override
   bool validate(bool? value) {

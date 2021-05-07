@@ -1,15 +1,15 @@
 import 'validator.dart';
 
-class NumberMust implements Validator {
+class NumberMust implements Validator<num> {
   String _error = '';
 
-  final _validators = <ValidatorFunc<num>>[];
+  final _validators = <ValidatorFunc<num?>>[];
 
   @override
   String get error => _error;
 
   @override
-  bool validate(value) {
+  bool validate(num? value) {
     for (final validator in _validators) {
       final err = validator(value);
       if (err.isNotEmpty) {
