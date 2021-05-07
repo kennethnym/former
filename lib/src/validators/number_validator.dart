@@ -17,6 +17,7 @@ class NumberMust implements Validator<num> {
         return false;
       }
     }
+    _error = '';
     return true;
   }
 

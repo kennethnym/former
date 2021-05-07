@@ -17,6 +17,7 @@ class BoolMust implements Validator<bool> {
         return false;
       }
     }
+    _error = '';
     return true;
   }
 

@@ -19,6 +19,7 @@ class StringMust implements Validator<String> {
         return false;
       }
     }
+    _error = '';
     return true;
   }
 
