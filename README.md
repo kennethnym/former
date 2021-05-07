@@ -100,13 +100,13 @@ the `_Form` widget:
 ```dart
 Column(
   children: [
-    FormerTextField(field: MyFormField.username),
-    FormerError(field: MyFormField.username),
-    FormerTextField(field: MyFormField.email),
-    FormerError(field: MyFormField.email),
+    FormerTextField<MyForm>(field: MyFormField.username),
+    FormerError<MyForm>(field: MyFormField.username),
+    FormerTextField<MyForm>(field: MyFormField.email),
+    FormerError<MyForm>(field: MyFormField.email),
     ElevatedButton(
       onPressed: () {
-        Former.of(context, listen: false).submit();
+        Former.of<MyForm>(context, listen: false).submit();
       },
       child: Text('submit'),
     ),
@@ -114,6 +114,7 @@ Column(
 );
 ```
 
+- The `MyForm` type passed to the former controls allow them to find the correct form object in context.
 - `FormerTextField` automatically updates the given field of `MyForm` (`username` and `email`)
 whenever there are changes
 - `FormerError` displays an error message whenever the given field is invalid.
