@@ -164,7 +164,7 @@ class _FormerTextFieldState<F extends FormerForm>
       ..addListener(() {
         formProvider.update(
           field: widget.field,
-          withValue: _isNum ? num.parse(_controller.text) : _controller.text,
+          withValue: _isNum ? num.tryParse(_controller.text) : _controller.text,
         );
       });
   }
@@ -174,7 +174,6 @@ class _FormerTextFieldState<F extends FormerForm>
     return Selector<FormerProvider<F>, bool>(
       selector: (_, provider) => provider.isFormEnabled,
       builder: (_, isFormEnabled, __) => TextField(
-        key: widget.key,
         controller: _controller,
         focusNode: widget.focusNode,
         decoration: widget.decoration,
