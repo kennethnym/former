@@ -97,7 +97,7 @@ part 'my_form.g.dart';
 
 to import the generated code.
 
-The Dart analyzer will complain about unrecognized symbols and imports. To fix it, we only need to start the code
+The Dart analyzer will complain about unrecognized symbols and imports. To fix it, start the code
 generation via `build_runner`:
 
 ```
@@ -116,7 +116,6 @@ Without `former`, this has to be done in an imperative way by, for example, chec
 to create the schema class that is generated for you. In `my_form.dart`,
 
 ```dart
-
 final schema = MyFormSchema(
   username: StringMust()
     ..hasMinLength(10)
@@ -131,7 +130,7 @@ returning `this` for method chaining, the cascade operator `..` is preferred.
 
 ### Building form controls
 
-`former` exports various widgets that interacts with a given form. To start, let's first create our form widget:
+`former` exports various widgets that interacts with the given form. To start, let's first create our form widget:
 
 ```dart
 import 'package:flutter/material.dart';
