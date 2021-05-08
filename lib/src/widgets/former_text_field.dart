@@ -134,6 +134,7 @@ class FormerTextField<TForm extends FormerForm> extends StatefulWidget {
 class _FormerTextFieldState<F extends FormerForm>
     extends State<FormerTextField> {
   late final TextEditingController _controller;
+  late final _isNum;
 
   @override
   void initState() {
@@ -142,10 +143,11 @@ class _FormerTextFieldState<F extends FormerForm>
     final formProvider = Former.of<F>(context, listen: false);
     final initialValue = formProvider.form[widget.field];
 
+    _isNum = initialValue is num;
+
     assert(
       initialValue is String ||
-          (initialValue is num &&
-              widget.keyboardType == TextInputType.number) ||
+          (_isNum && widget.keyboardType == TextInputType.number) ||
           initialValue is String?,
       '${widget.field} is not a string or a number, but FormerTextField is used to control the field. '
       'FormerTextField can only control text fields or'
@@ -158,7 +160,7 @@ class _FormerTextFieldState<F extends FormerForm>
       ..addListener(() {
         formProvider.update(
           field: widget.field,
-          withValue: _controller.text,
+          withValue: _isNum ? num.parse(_controller.text) : _controller.text,
         );
       });
   }
