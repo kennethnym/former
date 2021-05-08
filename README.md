@@ -203,3 +203,17 @@ class MyApp extends StatelessWidget {
 ### Source code
 
 The full source code is available in the `example` folder.
+
+## Available widgets
+
+The following widgets are available for use with `former`:
+
+- `FormerTextField`
+- `FormerCheckbox`
+- `FormerSwitch`
+- `FormerSlider`
+
+In development:
+
+- `FormerRadio`
+- `FormerDropdownButton`
