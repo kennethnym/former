@@ -3,6 +3,15 @@ import 'package:flutter/rendering.dart';
 import 'package:former/former.dart';
 import 'package:provider/provider.dart';
 
+/// A normal [Checkbox] that
+///   - updates the value of the given field in the form whenever it changes.
+///   - follows whether the form is enabled (can override in constructor)
+///
+/// The given field has to be:
+///   - a boolean field ([tristate] must be **off**), or
+///   - a nullable boolean field ([tristate] must be **on).
+///
+/// If the field is incompatible, an [AssertionError] will be thrown.
 class FormerCheckbox<TForm extends FormerForm> extends StatefulWidget {
   final FormerField field;
   final bool? enabled;
@@ -23,6 +32,12 @@ class FormerCheckbox<TForm extends FormerForm> extends StatefulWidget {
   final FocusNode? focusNode;
   final bool autofocus;
 
+  /// Creates a checkbox that consumes the [FormerForm] in context.
+  ///
+  /// By default, the enabled state of this field follows that of [FormerForm].
+  /// This can be overridden with the [enabled] option.
+  ///
+  /// This constructor mirrors all the options for the [Checkbox] widget.
   const FormerCheckbox({
     Key? key,
     required this.field,
