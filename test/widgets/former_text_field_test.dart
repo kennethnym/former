@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:former/former.dart';
 
@@ -31,7 +32,7 @@ void main() {
     );
 
     testWidgets(
-      'should pass assertion if field is a number and keyboard type is number',
+      'should fail assertion if field is a non-nullable number and keyboard type is number',
       (tester) async {
         await tester.pumpWidget(
           wrapWithFormer(
@@ -41,8 +42,145 @@ void main() {
             ),
           ),
         );
+        expect(tester.takeException(), isInstanceOf<AssertionError>());
+      },
+    );
+
+    testWidgets(
+      'should pass assertion if field is a nullable number and keyboard type is number',
+      (tester) async {
+        await tester.pumpWidget(
+          wrapWithFormer(
+            control: FormerTextField<TestForm>(
+              field: TestFormField.nullableIntField,
+              keyboardType: TextInputType.number,
+            ),
+          ),
+        );
         expect(tester.takeException(), isNull);
       },
     );
+
+    testWidgets('should update field value when changed', (tester) async {
+      final textField = GlobalKey();
+
+      await tester.pumpWidget(
+        wrapWithFormer(
+          control: FormerTextField<TestForm>(
+            key: textField,
+            field: TestFormField.stringField,
+          ),
+        ),
+      );
+
+      final form =
+          Former.of<TestForm>(textField.currentContext!, listen: false).form;
+
+      expect(form.stringField, isEmpty);
+
+      const newText = 'new text';
+      await tester.enterText(find.byKey(textField), newText);
+      expect(form.stringField, newText);
+    });
+
+    testWidgets('should update number field when changed', (tester) async {
+      final textField = GlobalKey();
+
+      await tester.pumpWidget(
+        wrapWithFormer(
+          control: FormerTextField<TestForm>(
+            key: textField,
+            field: TestFormField.nullableIntField,
+            keyboardType: TextInputType.number,
+          ),
+        ),
+      );
+
+      final form =
+          Former.of<TestForm>(textField.currentContext!, listen: false).form;
+
+      expect(form.nullableIntField, 0);
+
+      await tester.enterText(find.byKey(textField), '23');
+      expect(form.nullableIntField, 23);
+    });
+
+    testWidgets(
+      'should set number field to null if invalid number is entered',
+      (tester) async {
+        final textField = GlobalKey();
+
+        await tester.pumpWidget(
+          wrapWithFormer(
+            control: FormerTextField<TestForm>(
+              key: textField,
+              field: TestFormField.nullableIntField,
+              keyboardType: TextInputType.number,
+            ),
+          ),
+        );
+
+        final form =
+            Former.of<TestForm>(textField.currentContext!, listen: false).form;
+
+        expect(form.nullableIntField, 0);
+
+        await tester.enterText(find.byKey(textField), '23a');
+        expect(form.nullableIntField, isNull);
+      },
+    );
+
+    testWidgets('should use given controller', (tester) async {
+      final textField = GlobalKey();
+      final controller = TextEditingController();
+
+      await tester.pumpWidget(
+        wrapWithFormer(
+          control: FormerTextField<TestForm>(
+            key: textField,
+            controller: controller,
+            field: TestFormField.stringField,
+          ),
+        ),
+      );
+
+      final form =
+          Former.of<TestForm>(textField.currentContext!, listen: false).form;
+
+      expect(form.stringField, isEmpty);
+
+      const newText = 'newText';
+      await tester.enterText(find.byKey(textField), newText);
+
+      expect(form.stringField, newText);
+      expect(controller.text, newText);
+    });
+
+    testWidgets('should be disabled if form is disabled', (tester) async {
+      final textFieldKey = GlobalKey();
+
+      await tester.pumpWidget(
+        wrapWithFormer(
+          control: FormerTextField<TestForm>(
+            key: textFieldKey,
+            field: TestFormField.stringField,
+          ),
+        ),
+      );
+
+      final provider =
+          Former.of<TestForm>(textFieldKey.currentContext!, listen: false);
+
+      provider.isFormEnabled = false;
+      await tester.pump();
+
+      final TextField textField = tester.firstWidget(
+        find.descendant(
+          of: find.byKey(textFieldKey),
+          matching: find.byType(TextField),
+        ),
+      );
+      expect(textField.enabled, isFalse);
+    });
   });
 }
