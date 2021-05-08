@@ -29,5 +29,8 @@ jobs:
         with:
           channel: stable
       - run: flutter pub get
-      
-      - run: flutter test test
+
+      - run: flutter test --coverage ./test
+
+      # upload coverage to CodeCov
+      - run: bash <(curl -s https://codecov.io/bash) -t ${{ secrets.CODECOV_TOKEN }}
