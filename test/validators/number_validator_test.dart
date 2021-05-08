@@ -9,6 +9,18 @@ void main() {
       numberMust = NumberMust();
     });
 
+    test('should verify that the given value exists', () {
+      const msg = 'is null';
+
+      numberMust.exist(msg);
+
+      expect(numberMust.validate(null), isFalse);
+      expect(numberMust.error, msg);
+
+      expect(numberMust.validate(0), isTrue);
+      expect(numberMust.error, isEmpty);
+    });
+
     test('should verify that the given value is an integer', () {
       const msg = 'not integer';
 

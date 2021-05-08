@@ -9,6 +9,18 @@ void main() {
       stringMust = StringMust();
     });
 
+    test('should verify that the given value exists', () {
+      const msg = 'is null';
+
+      stringMust.exist(msg);
+
+      expect(stringMust.validate(null), isFalse);
+      expect(stringMust.error, msg);
+
+      expect(stringMust.validate(''), isTrue);
+      expect(stringMust.error, isEmpty);
+    });
+
     test('should verify that the given value matches the given regex', () {
       const msg = 'does not match';
 

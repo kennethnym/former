@@ -23,6 +23,14 @@ class StringMust implements Validator<String> {
     return true;
   }
 
+  /// Instructs [StringMust] to make sure the given string is not null.
+  void exist([String? errorMessage]) {
+    _validators.add((value) {
+      if (value == null) return errorMessage ?? 'The given string is null';
+      return '';
+    });
+  }
+
   /// Instructs [StringMust] to check
   /// whether the given value matches [pattern].
   void match(RegExp pattern, [String? errorMessage]) {

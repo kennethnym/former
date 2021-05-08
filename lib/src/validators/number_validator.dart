@@ -21,6 +21,14 @@ class NumberMust implements Validator<num> {
     return true;
   }
 
+  /// Instructs [NumberMust] to make sure the given value is not null.
+  void exist([String? errorMessage]) {
+    _validators.add((value) {
+      if (value == null) return errorMessage ?? 'The number is null';
+      return '';
+    });
+  }
+
   /// Instructs [NumberMust] to make sure the given number
   /// is an integer, i.e. no decimal places.
   void beInteger([String? errorMessage]) {
