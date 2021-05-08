@@ -212,7 +212,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "942c172346734b6900aac1e0270a9806d51afd56"
+      resolved-ref: aab2388bb8c466c1053d79488304458d2b719e3b
       url: "https://github.com/kennethnym/former_gen.git"
     source: git
     version: "0.0.1"
@@ -362,7 +362,7 @@ packages:
       name: shelf
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.1.1"
+    version: "1.1.2"
   shelf_web_socket:
     dependency: transitive
     description:

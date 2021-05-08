@@ -1,10 +1,19 @@
 import 'package:former/former.dart';
 import 'package:former/validators.dart';
 
-class TestForm implements FormerForm {
+class TestForm extends FormerForm {
   String stringField = '';
   int intField = 0;
+  int? nullableIntField = 0;
   bool boolField = false;
+
+  @override
+  final Map<FormerField, String> fieldType = {
+    TestFormField.stringField: 'String',
+    TestFormField.intField: 'int',
+    TestFormField.nullableIntField: 'int?',
+    TestFormField.boolField: 'bool',
+  };
 
   @override
   dynamic operator [](FormerField field) {
@@ -14,6 +23,8 @@ class TestForm implements FormerForm {
       case 1:
         return intField;
       case 2:
+        return nullableIntField;
+      case 3:
         return boolField;
     }
   }
@@ -28,6 +39,9 @@ class TestForm implements FormerForm {
         intField = newValue;
         break;
       case 2:
+        nullableIntField = newValue;
+        break;
+      case 3:
         boolField = newValue;
         break;
     }
@@ -42,21 +56,24 @@ class TestForm implements FormerForm {
 class TestFormField extends FormerField {
   const TestFormField._(int value) : super(value);
 
-  static const all = [stringField, intField, boolField];
+  static const all = [stringField, intField, nullableIntField, boolField];
 
   static const stringField = TestFormField._(0);
   static const intField = TestFormField._(1);
-  static const boolField = TestFormField._(2);
+  static const nullableIntField = TestFormField._(2);
+  static const boolField = TestFormField._(3);
 }
 
 class TestFormSchema extends FormerSchema<TestForm> {
   final StringMust stringField;
   final NumberMust intField;
+  final NumberMust nullableIntField;
   final BoolMust boolField;
 
   TestFormSchema({
     required this.stringField,
     required this.intField,
+    required this.nullableIntField,
     required this.boolField,
   });
 
@@ -68,6 +85,8 @@ class TestFormSchema extends FormerSchema<TestForm> {
       case 1:
         return intField.error;
       case 2:
+        return nullableIntField.error;
+      case 3:
         return boolField.error;
       default:
         return '';
@@ -78,6 +97,7 @@ class TestFormSchema extends FormerSchema<TestForm> {
   bool validate(TestForm form) => [
         stringField.validate(form.stringField),
         intField.validate(form.intField),
+        nullableIntField.validate(form.nullableIntField),
         boolField.validate(form.boolField),
       ].every(fieldIsValid);
 }
@@ -89,5 +109,6 @@ const boolFieldError = 'does not exist';
 final testSchema = TestFormSchema(
   stringField: StringMust()..notBeEmpty(stringFieldError),
   intField: NumberMust()..bePositive(intFieldError),
+  nullableIntField: NumberMust(),
   boolField: BoolMust()..exist(boolFieldError),
 );

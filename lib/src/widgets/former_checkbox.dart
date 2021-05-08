@@ -65,11 +65,13 @@ class _FormerCheckboxState<F extends FormerForm> extends State<FormerCheckbox> {
 
     _formProvider = Former.of(context, listen: false);
     final initialValue = _formProvider.form[widget.field];
+    final fieldType = _formProvider.form.typeOf(widget.field);
 
     assert(
-      (!widget.tristate && initialValue is bool) ||
-          (widget.tristate && initialValue is bool?),
-      'FormerCheckbox is not compatible with the type of field ${widget.field}.\n'
+      (!widget.tristate && fieldType == 'bool') ||
+          (widget.tristate && fieldType == 'bool?'),
+      'FormerCheckbox is not compatible with the type of field ${widget.field}. '
+      'Type received: $fieldType. \n'
       'If ${widget.field} is a nullable bool, then FormerCheckbox.tristate must be enabled.\n'
       'If ${widget.field} is a bool, then FormerCheckbox.tristate must be disabled.\n'
       'Otherwise, you should use a Former control that is compatible with the type of ${widget.field}.',

@@ -74,10 +74,12 @@ class _FormerSwitchState<F extends FormerForm> extends State<FormerSwitch> {
 
     _formProvider = Former.of(context, listen: false);
     final initialValue = _formProvider.form[widget.field];
+    final fieldType = _formProvider.form.typeOf(widget.field);
 
     assert(
-      initialValue is bool,
-      'FormerSwitch is incompatible with the type of ${widget.field}.\n'
+      _formProvider.form.typeOf(widget.field) == 'bool',
+      'FormerSwitch is incompatible with the type of ${widget.field}}. '
+      'Type received: $fieldType\n'
       'FormerSwitch can only control fields of type bool. '
       'You should use a Former control that is compatible with the type of ${widget.field}.',
     );

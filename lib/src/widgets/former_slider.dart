@@ -72,9 +72,10 @@ class _FormerSliderState<F extends FormerForm> extends State<FormerSlider> {
   }
 
   /// Verifies whether [value] is of type that this control can handle.
-  bool _isCorrectType(dynamic value) {
-    final isDouble = value is double || value is double?;
-    final isNum = value is num || value is num?;
+  bool get _isCorrectType {
+    final type = _formProvider.form.typeOf(widget.field);
+    final isDouble = type == 'double' || type == 'double?';
+    final isNum = type == 'num' || type == 'num?';
 
     return _isInt || isDouble || isNum;
   }
@@ -85,12 +86,14 @@ class _FormerSliderState<F extends FormerForm> extends State<FormerSlider> {
 
     _formProvider = Former.of(context, listen: false);
     final initialValue = _formProvider.form[widget.field];
+    final fieldType = _formProvider.form.typeOf(widget.field);
 
-    _isInt = initialValue is int || initialValue is int?;
+    _isInt = fieldType == 'int' || fieldType == 'int?';
 
     assert(
-      _isCorrectType(initialValue),
+      _isCorrectType,
       '${widget.field} is not a number, but FormerSlider is used to control the field. '
+      'Type received: $fieldType.\n'
       'FormerSlider can only control number fields.',
     );
 

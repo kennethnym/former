@@ -4,13 +4,13 @@ import 'package:former/validators.dart';
 
 part 'my_form.g.dart';
 
-class MyForm = _MyForm with _$MyFormIndexable;
+class MyForm = _MyForm with _$MyForm;
 
 @Formable()
-abstract class _MyForm implements FormerForm {
+abstract class _MyForm extends FormerForm {
   String username = '';
   String email = '';
-  int age = 1;
+  int? age = 1;
   bool shouldSendNewsletter = false;
   bool shouldEnableAnalytics = false;
 

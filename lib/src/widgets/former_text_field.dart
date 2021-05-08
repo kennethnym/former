@@ -142,21 +142,25 @@ class _FormerTextFieldState<F extends FormerForm>
 
     final formProvider = Former.of<F>(context, listen: false);
     final initialValue = formProvider.form[widget.field];
+    final fieldType = formProvider.form.typeOf(widget.field);
 
-    _isNum = initialValue is num;
+    _isNum =
+        fieldType == 'num?' || fieldType == 'int?' || fieldType == 'double?';
 
     assert(
-      initialValue is String ||
-          (_isNum && widget.keyboardType == TextInputType.number) ||
-          initialValue is String?,
+      fieldType == 'String' ||
+          fieldType == 'String?' ||
+          (_isNum && widget.keyboardType == TextInputType.number),
       '${widget.field} is not a string or a number, but FormerTextField is used to control the field. '
       'FormerTextField can only control text fields or'
-      'number fields when keyboardType is set to TextInputType.number or TextInputType.numberWithOptions.',
+      'number fields when keyboardType is set to TextInputType.number.\n'
+      'Note that if the field is a number, it has to be nullable, '
+      'since FormerTextField can receive empty text which cannot be meaningfully parsed to a number.',
     );
 
     _controller = widget.controller ?? TextEditingController();
     _controller
-      ..text = initialValue
+      ..text = _isNum ? initialValue?.toString() ?? '' : initialValue
       ..addListener(() {
         formProvider.update(
           field: widget.field,
