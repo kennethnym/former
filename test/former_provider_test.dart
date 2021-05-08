@@ -47,9 +47,9 @@ void main() {
     });
 
     test('should update field correctly', () {
-      const field1NewValue = '123';
-      provider.update(field: TestFormField.field1, withValue: field1NewValue);
-      expect(provider.form.field1, field1NewValue);
+      const newValue = '123';
+      provider.update(field: TestFormField.stringField, withValue: newValue);
+      expect(provider.form.stringField, newValue);
     });
   });
 }

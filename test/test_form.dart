@@ -2,19 +2,19 @@ import 'package:former/former.dart';
 import 'package:former/validators.dart';
 
 class TestForm implements FormerForm {
-  String field1 = '';
-  int field2 = 0;
-  bool field3 = false;
+  String stringField = '';
+  int intField = 0;
+  bool boolField = false;
 
   @override
   dynamic operator [](FormerField field) {
     switch (field.value) {
       case 0:
-        return field1;
+        return stringField;
       case 1:
-        return field2;
+        return intField;
       case 2:
-        return field3;
+        return boolField;
     }
   }
 
@@ -22,13 +22,13 @@ class TestForm implements FormerForm {
   void operator []=(FormerField field, newValue) {
     switch (field.value) {
       case 0:
-        field1 = newValue;
+        stringField = newValue;
         break;
       case 1:
-        field2 = newValue;
+        intField = newValue;
         break;
       case 2:
-        field3 = newValue;
+        boolField = newValue;
         break;
     }
   }
@@ -42,33 +42,33 @@ class TestForm implements FormerForm {
 class TestFormField extends FormerField {
   const TestFormField._(int value) : super(value);
 
-  static const all = [field1, field2, field3];
+  static const all = [stringField, intField, boolField];
 
-  static const field1 = TestFormField._(0);
-  static const field2 = TestFormField._(1);
-  static const field3 = TestFormField._(2);
+  static const stringField = TestFormField._(0);
+  static const intField = TestFormField._(1);
+  static const boolField = TestFormField._(2);
 }
 
 class TestFormSchema extends FormerSchema<TestForm> {
-  final StringMust field1;
-  final NumberMust field2;
-  final BoolMust field3;
+  final StringMust stringField;
+  final NumberMust intField;
+  final BoolMust boolField;
 
   TestFormSchema({
-    required this.field1,
-    required this.field2,
-    required this.field3,
+    required this.stringField,
+    required this.intField,
+    required this.boolField,
   });
 
   @override
   String errorOf(FormerField field) {
     switch (field.value) {
       case 0:
-        return field1.error;
+        return stringField.error;
       case 1:
-        return field2.error;
+        return intField.error;
       case 2:
-        return field3.error;
+        return boolField.error;
       default:
         return '';
     }
@@ -76,18 +76,18 @@ class TestFormSchema extends FormerSchema<TestForm> {
 
   @override
   bool validate(TestForm form) => [
-        field1.validate(form.field1),
-        field2.validate(form.field2),
-        field3.validate(form.field3),
+        stringField.validate(form.stringField),
+        intField.validate(form.intField),
+        boolField.validate(form.boolField),
       ].every(fieldIsValid);
 }
 
-const field1Error = 'is empty';
-const field2Error = 'is negative';
-const field3Error = 'does not exist';
+const stringFieldError = 'is empty';
+const intFieldError = 'is negative';
+const boolFieldError = 'does not exist';
 
 final testSchema = TestFormSchema(
-  field1: StringMust()..notBeEmpty(field1Error),
-  field2: NumberMust()..bePositive(field2Error),
-  field3: BoolMust()..exist(field3Error),
+  stringField: StringMust()..notBeEmpty(stringFieldError),
+  intField: NumberMust()..bePositive(intFieldError),
+  boolField: BoolMust()..exist(boolFieldError),
 );
