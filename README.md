@@ -97,8 +97,8 @@ part 'my_form.g.dart';
 
 to import the generated code.
 
-The Dart analyzer will complain about unrecognized symbols and imports. To fix it, start the code
-generation via `build_runner`:
+The Dart analyzer will complain about unrecognized symbols and imports. To fix it, start the code generation
+via `build_runner`:
 
 ```
 flutter pub run build_runner build
@@ -116,6 +116,7 @@ Without `former`, this has to be done in an imperative way by, for example, chec
 to create the schema class that is generated for you. In `my_form.dart`,
 
 ```dart
+
 final schema = MyFormSchema(
   username: StringMust()
     ..hasMinLength(10)
@@ -204,7 +205,9 @@ class MyApp extends StatelessWidget {
 
 The full source code is available in the `example` folder.
 
-## Available widgets
+## API
+
+### Available widgets
 
 The following widgets are available for use with `former`:
 
@@ -217,3 +220,17 @@ In development:
 
 - `FormerRadio`
 - `FormerDropdownButton`
+
+### Schema
+
+The following validators can be used to validate form fields. Each validator has various methods that imposes extra
+requirements on a given value (called *requirement methods*).
+
+Every requirement method accepts an optional error message param that is returned when the value does not meet that
+requirement.
+
+- `StringMust`
+- `NumberMust`
+- `BoolMust`
+
+Implement the `Validator` class to create custom validation logic.
