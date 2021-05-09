@@ -18,12 +18,12 @@ void main() {
     });
 
     testWidgets(
-      'should fail assertion if field is a number but keyboard type is not number',
+      'should fail assertion if field is a nullable number but keyboard type is not number',
       (tester) async {
         await tester.pumpWidget(
           wrapWithFormer(
             control: FormerTextField<TestForm>(
-              field: TestFormField.intField,
+              field: TestFormField.nullableIntField,
             ),
           ),
         );
@@ -83,7 +83,7 @@ void main() {
       expect(form.stringField, newText);
     });
 
-    testWidgets('should update number field when changed', (tester) async {
+    testWidgets('should update int field when changed', (tester) async {
       final textField = GlobalKey();
 
       await tester.pumpWidget(
@@ -103,6 +103,28 @@ void main() {
 
       await tester.enterText(find.byKey(textField), '23');
       expect(form.nullableIntField, 23);
+    });
+
+    testWidgets('should update double field when changed', (tester) async {
+      final textField = GlobalKey();
+
+      await tester.pumpWidget(
+        wrapWithFormer(
+          control: FormerTextField<TestForm>(
+            key: textField,
+            field: TestFormField.nullableDoubleField,
+            keyboardType: TextInputType.number,
+          ),
+        ),
+      );
+
+      final form =
+          Former.of<TestForm>(textField.currentContext!, listen: false).form;
+
+      expect(form.nullableDoubleField, 0);
+
+      await tester.enterText(find.byKey(textField), '23.1');
+      expect(form.nullableDoubleField, 23.1);
     });
 
     testWidgets(

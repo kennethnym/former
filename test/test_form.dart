@@ -5,6 +5,7 @@ class TestForm extends FormerForm {
   String stringField = '';
   int intField = 0;
   int? nullableIntField = 0;
+  double? nullableDoubleField = 0.0;
   bool boolField = false;
 
   @override
@@ -12,6 +13,7 @@ class TestForm extends FormerForm {
     TestFormField.stringField: 'String',
     TestFormField.intField: 'int',
     TestFormField.nullableIntField: 'int?',
+    TestFormField.nullableDoubleField: 'double?',
     TestFormField.boolField: 'bool',
   };
 
@@ -25,6 +27,8 @@ class TestForm extends FormerForm {
       case 2:
         return nullableIntField;
       case 3:
+        return nullableDoubleField;
+      case 4:
         return boolField;
     }
   }
@@ -42,6 +46,9 @@ class TestForm extends FormerForm {
         nullableIntField = newValue;
         break;
       case 3:
+        nullableDoubleField = newValue;
+        break;
+      case 4:
         boolField = newValue;
         break;
     }
@@ -61,19 +68,22 @@ class TestFormField extends FormerField {
   static const stringField = TestFormField._(0);
   static const intField = TestFormField._(1);
   static const nullableIntField = TestFormField._(2);
-  static const boolField = TestFormField._(3);
+  static const nullableDoubleField = TestFormField._(3);
+  static const boolField = TestFormField._(4);
 }
 
 class TestFormSchema extends FormerSchema<TestForm> {
   final StringMust stringField;
   final NumberMust intField;
   final NumberMust nullableIntField;
+  final NumberMust nullableDoubleField;
   final BoolMust boolField;
 
   TestFormSchema({
     required this.stringField,
     required this.intField,
     required this.nullableIntField,
+    required this.nullableDoubleField,
     required this.boolField,
   });
 
@@ -87,6 +97,8 @@ class TestFormSchema extends FormerSchema<TestForm> {
       case 2:
         return nullableIntField.error;
       case 3:
+        return nullableDoubleField.error;
+      case 4:
         return boolField.error;
       default:
         return '';
@@ -110,5 +122,6 @@ final testSchema = TestFormSchema(
   stringField: StringMust()..notBeEmpty(stringFieldError),
   intField: NumberMust()..bePositive(intFieldError),
   nullableIntField: NumberMust(),
+  nullableDoubleField: NumberMust(),
   boolField: BoolMust()..exist(boolFieldError),
 );

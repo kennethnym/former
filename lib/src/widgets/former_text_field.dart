@@ -134,7 +134,14 @@ class FormerTextField<TForm extends FormerForm> extends StatefulWidget {
 class _FormerTextFieldState<F extends FormerForm>
     extends State<FormerTextField> {
   late final TextEditingController _controller;
-  late final _isNum;
+
+  /// Stores the function to be used to cast the given [String] to a number,
+  /// depending on [widget.field].
+  ///
+  /// For example, if [widget.field] is an [int] field, then [cast] will be [int.tryParse].
+  ///
+  /// If [widget.field] is a [String] field, then [cast] will be null.
+  num? Function(String value)? cast;
 
   @override
   void initState() {
@@ -144,13 +151,34 @@ class _FormerTextFieldState<F extends FormerForm>
     final initialValue = formProvider.form[widget.field];
     final fieldType = formProvider.form.typeOf(widget.field);
 
-    _isNum =
-        fieldType == 'num?' || fieldType == 'int?' || fieldType == 'double?';
+    var isString = false;
+    var isNum = false;
+
+    switch (fieldType) {
+      case 'num?':
+        isNum = true;
+        cast = num.tryParse;
+        break;
+      case 'int?':
+        isNum = true;
+        cast = int.tryParse;
+        break;
+      case 'double?':
+        isNum = true;
+        cast = double.tryParse;
+        break;
+
+      case 'String':
+      case 'String?':
+        isString = true;
+        break;
+
+      default:
+        break;
+    }
 
     assert(
-      fieldType == 'String' ||
-          fieldType == 'String?' ||
-          (_isNum && widget.keyboardType == TextInputType.number),
+      isNum && widget.keyboardType == TextInputType.number || isString,
       '${widget.field} is not a string or a number, but FormerTextField is used to control the field. '
       'FormerTextField can only control text fields or'
       'number fields when keyboardType is set to TextInputType.number.\n'
@@ -160,11 +188,13 @@ class _FormerTextFieldState<F extends FormerForm>
 
     _controller = widget.controller ?? TextEditingController();
     _controller
-      ..text = _isNum ? initialValue?.toString() ?? '' : initialValue
+      ..text = isNum ? initialValue?.toString() ?? '' : initialValue ?? ''
       ..addListener(() {
+        final cast = this.cast;
         formProvider.update(
           field: widget.field,
-          withValue: _isNum ? num.tryParse(_controller.text) : _controller.text,
+          withValue:
+              cast != null ? cast.call(_controller.text) : _controller.text,
         );
       });
   }
