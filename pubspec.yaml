@@ -1,5 +1,5 @@
 name: former
-description: Easy form building in Flutter.
+description: Easy form building in Flutter with a fluent schema API.
 version: 0.1.0-dev.1
 homepage: https://github.com/kennethnym/former
 
