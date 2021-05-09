@@ -4,6 +4,13 @@ import 'package:flutter/rendering.dart';
 import 'package:former/former.dart';
 import 'package:provider/provider.dart';
 
+/// A normal [Switch] that:
+///   - controls the given field
+///   - follows whether the form is enabled (can override in constructor)
+///
+/// The given field has to be a non-nullable [bool] field.
+///
+/// If the field is incompatible, an [AssertionError] is thrown.
 class FormerSwitch<TForm extends FormerForm> extends StatefulWidget {
   final FormerField field;
   final bool? enabled;
@@ -28,6 +35,16 @@ class FormerSwitch<TForm extends FormerForm> extends StatefulWidget {
   final FocusNode? focusNode;
   final bool autofocus;
 
+  /// Creates a [Switch] that consumes the [FormerForm] in context.
+  ///
+  /// [field] has to be a non-nullable [bool] field.
+  ///
+  /// An [AssertionError] is thrown when [field] is incompatible.
+  ///
+  /// By default, the enabled state of this field follows that of [FormerForm].
+  /// This can be overridden with the [enabled] option.
+  ///
+  /// This constructor mirrors all the options of the [Switch] widget.
   const FormerSwitch({
     Key? key,
     required this.field,

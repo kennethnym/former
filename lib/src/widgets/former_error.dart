@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:former/former.dart';
 import 'package:provider/provider.dart';
 
-/// A widget that shows an error message of a given field.
-/// If there is no error message an empty [Container] is built.
+/// A widget that shows an error message of the given field.
+///
+/// The error message has a default red color taken from the [Theme] in context.
 class FormerError<TForm extends FormerForm> extends StatelessWidget {
   final Widget? child;
   final FormerField field;
@@ -27,7 +28,10 @@ class FormerError<TForm extends FormerForm> extends StatelessWidget {
   /// To consume the error message, use [Former.of] to obtain [FormerProvider],
   /// then call [FormerProvider.errorOf].
   ///
-  /// This constructor mirrors all the options for the [Text] widget.
+  /// To override the default style of the error message, pass a [TextStyle]
+  /// to [style].
+  ///
+  /// This constructor mirrors all the options of the [Text] widget.
   const FormerError({
     Key? key,
     required this.field,

@@ -34,6 +34,12 @@ class FormerCheckbox<TForm extends FormerForm> extends StatefulWidget {
 
   /// Creates a checkbox that consumes the [FormerForm] in context.
   ///
+  /// [field] has to be:
+  ///   - a boolean field ([tristate] must be **off**), or
+  ///   - a nullable boolean field ([tristate] must be **on).
+  ///
+  /// An [AssertionError] is thrown if [field] is incompatible.
+  ///
   /// By default, the enabled state of this field follows that of [FormerForm].
   /// This can be overridden with the [enabled] option.
   ///

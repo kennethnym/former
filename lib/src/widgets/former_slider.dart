@@ -6,8 +6,19 @@ import 'package:provider/provider.dart';
 /// A normal [Slider] that:
 ///   - controls the given field
 ///   - follows whether the form is enabled (can override in constructor)
+///
+/// [Slider] returns a [double] when changed. When an [int] field is passed
+/// to [FormerSlider], the [double] is truncated to an [int] with [num.toInt].
+/// No special casting is done when it is a [num] field.
+///
+/// [TForm] must be specified in order for [FormerSlider] to find the correct
+/// form in context.
 class FormerSlider<TForm extends FormerForm> extends StatefulWidget {
+  /// The [FormerField] this slider controls.
   final FormerField field;
+
+  /// Whether this slider is enabled. Follows whether the form is enabled
+  /// when not overridden.
   final bool? enabled;
 
   final ValueChanged<double>? onChangeStart;
@@ -25,8 +36,15 @@ class FormerSlider<TForm extends FormerForm> extends StatefulWidget {
 
   /// Creates a [Slider] that consumes the [FormerForm] in context.
   ///
+  /// [field] has to be a [num] field, an [int] field, or a [double] field.
+  /// The field can be nullable.
+  ///
+  /// An [AssertionError] is thrown when [field] is incompatible.
+  ///
   /// By default, the enabled state of this field follows that of [FormerForm].
   /// This can be overridden with the [enabled] option.
+  ///
+  /// This constructor mirrors all the options of the [Slider] widget.
   const FormerSlider({
     Key? key,
     required this.field,
