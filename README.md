@@ -1,8 +1,6 @@
-# [Work in progress] former
+# former - Easy form building in Flutter
 
 <img src="./assets/images/former_widgets.png" width="400" /> <img src="./assets/images/former_form.png" width="400" />
-
-Easy form building in Flutter.
 
 ## Motivation
 
@@ -15,6 +13,28 @@ Form building in Flutter suffers from similar issues:
 - Validation and error handling requires imperative logic.
 
 This is where `former` comes in.
+
+## Installation
+
+**NOTE: THIS PACKAGE IS AT A PRE-RELEASE STAGE - API CAN CHANGE DRASTICALLY IN THE FUTURE.**
+
+Add `former` to the `dependencies` section of your `pubspec.yaml`:
+
+```yaml
+dependencies:
+  # ...your other dependencies
+  former: # optionally lock-in a version
+```
+
+and add `former_gen` to the `dev_dependencies` section:
+
+```yaml
+dev_dependencies:
+  # ...your other dependencies
+  former_gen: # optionally lock-in a version
+```
+
+Finally, run `flutter pub get`.
 
 ## Features
 
