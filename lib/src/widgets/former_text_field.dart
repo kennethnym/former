@@ -12,6 +12,10 @@ import 'package:provider/provider.dart';
 /// A normal [TextField] that
 ///   - updates the value of the given field in the form whenever it changes.
 ///   - follows whether the form is enabled (can override in constructor)
+///
+/// If the given field is a number field, then [FormerTextField]
+/// will try to parse the user input to the corresponding number type.
+/// If that fails, null is returned. Hence, the number field has to be nullable.
 class FormerTextField<TForm extends FormerForm> extends StatefulWidget {
   final FormerField field;
 
@@ -67,6 +71,12 @@ class FormerTextField<TForm extends FormerForm> extends StatefulWidget {
   final String? restorationId;
 
   /// Creates a text field that consumes the [FormerForm] in context.
+  ///
+  /// [field] has to be:
+  ///   - a **nullable** [num], [int] or [double] field, or
+  ///   - a [String] field (nullable or not).
+  ///
+  /// An [AssertionError] is thrown when [field] is incompatible.
   ///
   /// By default, the enabled state of this field follows that of [FormerForm].
   /// This can be overridden with the [enabled] option.
