@@ -17,6 +17,7 @@ import 'package:provider/provider.dart';
 /// will try to parse the user input to the corresponding number type.
 /// If that fails, null is returned. Hence, the number field has to be nullable.
 class FormerTextField<TForm extends FormerForm> extends StatefulWidget {
+  /// The [FormerField] this text field controls.
   final FormerField field;
 
   final TextEditingController? controller;

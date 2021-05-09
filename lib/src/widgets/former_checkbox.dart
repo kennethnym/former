@@ -13,7 +13,11 @@ import 'package:provider/provider.dart';
 ///
 /// If the field is incompatible, an [AssertionError] will be thrown.
 class FormerCheckbox<TForm extends FormerForm> extends StatefulWidget {
+  /// The [FormerField] this checkbox controls.
   final FormerField field;
+
+  /// Whether [FormerCheckbox] is enabled. Follows whether the form is enabled
+  /// when not overridden.
   final bool? enabled;
 
   final bool? value;

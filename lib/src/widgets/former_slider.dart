@@ -17,7 +17,7 @@ class FormerSlider<TForm extends FormerForm> extends StatefulWidget {
   /// The [FormerField] this slider controls.
   final FormerField field;
 
-  /// Whether this slider is enabled. Follows whether the form is enabled
+  /// Whether [FormerSlider] is enabled. Follows whether the form is enabled
   /// when not overridden.
   final bool? enabled;
 

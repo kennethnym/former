@@ -12,7 +12,11 @@ import 'package:provider/provider.dart';
 ///
 /// If the field is incompatible, an [AssertionError] is thrown.
 class FormerSwitch<TForm extends FormerForm> extends StatefulWidget {
+  /// The [FormerField] this switch controls.
   final FormerField field;
+
+  /// Whether [FormerSwitch] is enabled. Follows whether the form is enabled
+  /// when not overridden.
   final bool? enabled;
 
   final Color? activeColor;

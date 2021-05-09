@@ -7,6 +7,8 @@ import 'package:provider/provider.dart';
 /// The error message has a default red color taken from the [Theme] in context.
 class FormerError<TForm extends FormerForm> extends StatelessWidget {
   final Widget? child;
+
+  /// [FormerError] will show the error message of this field.
   final FormerField field;
 
   final TextStyle? style;
