@@ -8,7 +8,12 @@ abstract class FormerForm {
   @protected
   abstract final Map<FormerField, String> fieldType;
 
-  Future<void> submit();
+  /// Submits this form, under the [context] of the [Former] widget that
+  /// provides this form.
+  ///
+  /// If you need to access any value in [context], make sure they are parents
+  /// of the [Former] widget that provides the form.
+  Future<void> submit(BuildContext context);
 
   /// Retrieves the type of [field].
   /// If [field] is not in this form, an empty string is returned.

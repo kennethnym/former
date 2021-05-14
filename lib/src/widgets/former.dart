@@ -54,7 +54,7 @@ class Former<TForm extends FormerForm> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => FormerProvider<TForm>(form(), schema()),
+      create: (_) => FormerProvider<TForm>(context, form(), schema()),
       child: child,
     );
   }

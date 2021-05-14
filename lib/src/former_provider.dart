@@ -7,11 +7,13 @@ import 'package:provider/provider.dart';
 class FormerProvider<TForm extends FormerForm> extends ChangeNotifier {
   final TForm form;
 
+  final BuildContext _context;
+
   final FormerSchema _schema;
 
   bool _isFormEnabled = true;
 
-  FormerProvider(this.form, this._schema);
+  FormerProvider(this._context, this.form, this._schema);
 
   static FormerProvider<TForm> of<TForm extends FormerForm>(
           BuildContext context,
@@ -40,6 +42,6 @@ class FormerProvider<TForm extends FormerForm> extends ChangeNotifier {
       notifyListeners();
       return Future.value();
     }
-    return form.submit();
+    return form.submit(_context);
   }
 }
