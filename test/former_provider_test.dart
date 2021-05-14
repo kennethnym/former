@@ -1,9 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:former/former.dart';
 import 'package:mockito/mockito.dart';
 
 import 'test_form.dart';
+
+class _MockBuildContext extends Mock implements BuildContext {}
 
 /// A callable class that is used as a test listener to [FormerProvider].
 class _TestProviderListener extends Mock {
@@ -18,7 +21,7 @@ void main() {
   setUp(() {
     testForm = TestForm();
     schema = testSchema;
-    provider = FormerProvider(testForm, schema);
+    provider = FormerProvider(_MockBuildContext(), testForm, schema);
   });
 
   group('FormerProvider', () {

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:former/former.dart';
 import 'package:former/validators.dart';
 
@@ -55,7 +56,7 @@ class TestForm extends FormerForm {
   }
 
   @override
-  Future<void> submit() {
+  Future<void> submit(BuildContext context) {
     return Future.value();
   }
 }
