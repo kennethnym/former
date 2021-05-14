@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:former_gen/former_gen.dart';
 import 'package:former/former.dart';
 import 'package:former/validators.dart';
@@ -18,7 +19,7 @@ abstract class _MyForm extends FormerForm {
   String ignored = '';
 
   @override
-  Future<void> submit() {
+  Future<void> submit(BuildContext context) {
     print(toJson());
     return Future.value();
   }

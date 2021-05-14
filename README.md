@@ -75,11 +75,16 @@ example, it can include submitting your form to some API for further processing.
 
 For simplicity's sake, our implementation of `submit` only returns an empty future value.
 
+Notice that the `submit` method
+accepts a `BuildContext`. This is the same `BuildContext` used by the `Former` widget that we will use later
+to provide this form. It can come in handy when you want to access other `Provider`s in the context. Just make sure that
+the `Provider`s you want to access are parents of the `Former` widget that is providing the form.
+
 ```dart
 @Formable()
 abstract class _MyForm extends FormerForm {
   @override
-  Future<void> submit() {
+  Future<void> submit(BuildContext context) {
     // TODO: implement submit()
     return Future.value();
   }
@@ -95,7 +100,7 @@ abstract class _MyForm extends FormerForm {
   String email = '';
 
   @override
-  Future<void> submit() {
+  Future<void> submit(BuildContext context) {
     // TODO: implement submit()
     return Future.value();
   }
