@@ -1,4 +1,10 @@
-## [0.2.0-dev.1] - v2 second dev release
+## [0.2.0-dev.3] - v2 third dev release
+
+New features:
+
+- `FormerProvider` now has a getter that verifies and returns whether the form is valid or not.
+
+## [0.2.0-dev.2] - v2 second dev release
 
 ### Breaking changes
 
