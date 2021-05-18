@@ -59,24 +59,26 @@ class FormerError<TForm extends FormerForm> extends StatelessWidget {
 
     return Selector<FormerProvider<TForm>, String>(
       selector: (_, provider) => provider.errorOf(field),
-      builder: (_, error, __) => Text(
-        error,
-        style: style ??
-            TextStyle(
-              color: Theme.of(context).errorColor,
+      builder: (_, error, __) => error.isEmpty
+          ? Container()
+          : Text(
+              error,
+              style: style ??
+                  TextStyle(
+                    color: Theme.of(context).errorColor,
+                  ),
+              strutStyle: strutStyle,
+              textAlign: textAlign,
+              textDirection: textDirection,
+              locale: locale,
+              softWrap: softWrap,
+              overflow: overflow,
+              textScaleFactor: textScaleFactor,
+              maxLines: maxLines,
+              semanticsLabel: semanticsLabel,
+              textWidthBasis: textWidthBasis,
+              textHeightBehavior: textHeightBehavior,
             ),
-        strutStyle: strutStyle,
-        textAlign: textAlign,
-        textDirection: textDirection,
-        locale: locale,
-        softWrap: softWrap,
-        overflow: overflow,
-        textScaleFactor: textScaleFactor,
-        maxLines: maxLines,
-        semanticsLabel: semanticsLabel,
-        textWidthBasis: textWidthBasis,
-        textHeightBehavior: textHeightBehavior,
-      ),
     );
   }
 }

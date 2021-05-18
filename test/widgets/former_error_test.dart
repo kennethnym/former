@@ -30,7 +30,7 @@ void main() {
       );
 
       // should be empty initially
-      expect(find.text(''), findsOneWidget);
+      expect(find.byType(Text), findsNothing);
 
       final provider =
           Former.of<TestForm>(error.currentContext!, listen: false);
