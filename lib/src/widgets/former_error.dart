@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:former/former.dart';
 import 'package:provider/provider.dart';
 
-/// A widget that shows an error message of the given field.
+/// A widget that shows an error message of the given field. If the field
+/// doesn't have any error, an empty [Container] is built.
 ///
 /// The error message has a default red color taken from the [Theme] in context.
 class FormerError<TForm extends FormerForm> extends StatelessWidget {
