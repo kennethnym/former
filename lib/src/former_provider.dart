@@ -22,6 +22,15 @@ class FormerProvider<TForm extends FormerForm> extends ChangeNotifier {
 
   bool get isFormEnabled => _isFormEnabled;
 
+  /// Validates [form] that it conforms to the schema and returns whether
+  /// it is valid. Listeners of [FormerProvider] are notified when this getter
+  /// is called.
+  bool get isFormValid {
+    final isValid = _schema.validate(form);
+    notifyListeners();
+    return isValid;
+  }
+
   set isFormEnabled(bool isEnabled) {
     _isFormEnabled = isEnabled;
     notifyListeners();
@@ -37,9 +46,7 @@ class FormerProvider<TForm extends FormerForm> extends ChangeNotifier {
 
   /// Checks if the form is valid
   Future<void> submit() {
-    final isValid = _schema.validate(form);
-    if (!isValid) {
-      notifyListeners();
+    if (!isFormValid) {
       return Future.value();
     }
     return form.submit(_context);

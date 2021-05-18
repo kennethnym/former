@@ -33,6 +33,24 @@ void main() {
       expect(provider.isFormEnabled, isTrue);
     });
 
+    test('should validate form and return whether it is valid', () {
+      final listener = _TestProviderListener();
+
+      provider.addListener(listener);
+
+      final isFormValid = provider.isFormValid;
+
+      expect(isFormValid, isFalse);
+      verify(listener()).called(1);
+
+      testForm.stringField = '123';
+
+      final isFormValid2 = provider.isFormValid;
+
+      expect(isFormValid2, isTrue);
+      verify(listener()).called(1);
+    });
+
     test('should notify listeners when enabled state is changed', () {
       final listener = _TestProviderListener();
 
