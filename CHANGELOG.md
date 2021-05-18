@@ -1,6 +1,10 @@
-## [0.2.0-dev.1] - v2 dev release
+## [0.2.0-dev.1] - v2 second dev release
 
-This is a minor update that requires a major version bump due to breaking changes.
+### Breaking changes
+
+- `FormerError` now renders an empty `Container` if the given field does not have any error.
+
+## [0.2.0-dev.1] - v2 dev release
 
 ### Breaking changes
 
