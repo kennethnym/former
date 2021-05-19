@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:former/former.dart';
-import 'package:former/src/exceptions/form_invalid_exception.dart';
 import 'package:mockito/mockito.dart';
 
 import 'test_form.dart';
