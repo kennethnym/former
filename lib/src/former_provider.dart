@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:former/src/exceptions/form_invalid_exception.dart';
 import 'package:former/src/former_field.dart';
 import 'package:former/src/former_form.dart';
 import 'package:former/src/former_schema.dart';
@@ -44,10 +45,16 @@ class FormerProvider<TForm extends FormerForm> extends ChangeNotifier {
     form[field] = withValue;
   }
 
-  /// Checks if the form is valid
+  /// Checks if [form] is valid, then submits [form] by calling
+  /// [FormerForm.submit]. ([FormerForm] is extended by your own form classes,
+  /// so [FormerForm.submit] should contain your own implementations of how to
+  /// submit the forms).
+  ///
+  /// If [form] is invalid, [FormInvalidException] is thrown.
+  /// The name of the invalid form is available as [FormInvalidException.invalidForm].
   Future<void> submit() {
     if (!isFormValid) {
-      return Future.value();
+      throw FormInvalidException(TForm);
     }
     return form.submit(_context);
   }

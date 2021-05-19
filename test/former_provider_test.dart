@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:former/former.dart';
+import 'package:former/src/exceptions/form_invalid_exception.dart';
 import 'package:mockito/mockito.dart';
 
 import 'test_form.dart';
@@ -49,6 +50,18 @@ void main() {
 
       expect(isFormValid2, isTrue);
       verify(listener()).called(1);
+    });
+
+    test(
+        'should throw FormInvalidException if the form being submitted is invalid',
+        () {
+      expect(provider.submit, throwsA(isA<FormInvalidException>()));
+
+      try {
+        provider.submit();
+      } on FormInvalidException catch (ex) {
+        expect(ex.invalidForm, 'TestForm');
+      }
     });
 
     test('should notify listeners when enabled state is changed', () {

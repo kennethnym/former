@@ -119,10 +119,10 @@ const stringFieldError = 'is empty';
 const intFieldError = 'is negative';
 const boolFieldError = 'does not exist';
 
-final testSchema = TestFormSchema(
-  stringField: StringMust()..notBeEmpty(stringFieldError),
-  intField: NumberMust()..bePositive(intFieldError),
-  nullableIntField: NumberMust(),
-  nullableDoubleField: NumberMust(),
-  boolField: BoolMust()..exist(boolFieldError),
-);
+get testSchema => TestFormSchema(
+      stringField: StringMust()..notBeEmpty(stringFieldError),
+      intField: NumberMust()..bePositive(intFieldError),
+      nullableIntField: NumberMust(),
+      nullableDoubleField: NumberMust(),
+      boolField: BoolMust()..exist(boolFieldError),
+    );
