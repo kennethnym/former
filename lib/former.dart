@@ -15,3 +15,6 @@ export 'src/widgets/former_slider.dart';
 export 'src/widgets/former_error.dart';
 export 'src/widgets/former_checkbox.dart';
 export 'src/widgets/former_switch.dart';
+
+// exceptions
+export 'src/exceptions/form_invalid_exception.dart';
