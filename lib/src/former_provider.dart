@@ -52,10 +52,24 @@ class FormerProvider<TForm extends FormerForm> extends ChangeNotifier {
   ///
   /// If [form] is invalid, [FormInvalidException] is thrown.
   /// The name of the invalid form is available as [FormInvalidException.invalidForm].
-  Future<void> submit() {
+  ///
+  /// [form] is automatically disabled until [FormerForm.submit] finishes.
+  /// [form] will then be re-enabled.
+  ///
+  /// Accepts generic parameter [T] that should match the return value
+  /// of the submit method of your form. For example, if your form's submit
+  /// method returns `Future<String>`, then [T] should be [String]. Skip [T]
+  /// if it returns `Future<void>`
+  Future<T> submit<T>() async {
+    isFormEnabled = false;
+
     if (!isFormValid) {
       throw FormInvalidException(TForm);
     }
-    return form.submit(_context);
+
+    final result = await form.submit(_context);
+    isFormEnabled = true;
+
+    return result;
   }
 }

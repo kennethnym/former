@@ -38,9 +38,8 @@ void main() {
 
       try {
         // update with an invalid value
-        provider
-          ..update(field: TestFormField.stringField, withValue: '')
-          ..submit();
+        provider.update(field: TestFormField.stringField, withValue: '');
+        await provider.submit();
       } on FormInvalidException catch (_) {
         // exception is expected
       } finally {
@@ -67,9 +66,8 @@ void main() {
 
       try {
         // update with an invalid value
-        provider
-          ..update(field: TestFormField.stringField, withValue: '')
-          ..submit();
+        provider.update(field: TestFormField.stringField, withValue: '');
+        await provider.submit();
       } on FormInvalidException catch (_) {
         // exception is expected
       } finally {
@@ -103,9 +101,8 @@ void main() {
 
       try {
         // update with an invalid value
-        provider
-          ..update(field: TestFormField.stringField, withValue: '')
-          ..submit();
+        provider.update(field: TestFormField.stringField, withValue: '');
+        await provider.submit();
       } on FormInvalidException catch (_) {
         // exception is expected
       } finally {

@@ -2,8 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:former/former.dart';
+import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
+import 'former_provider_test.mocks.dart';
 import 'test_form.dart';
 
 class _MockBuildContext extends Mock implements BuildContext {}
@@ -13,6 +15,7 @@ class _TestProviderListener extends Mock {
   void call();
 }
 
+@GenerateMocks([TestForm])
 void main() {
   late TestForm testForm;
   late TestFormSchema schema;
@@ -53,14 +56,29 @@ void main() {
 
     test(
         'should throw FormInvalidException if the form being submitted is invalid',
-        () {
-      expect(provider.submit, throwsA(isA<FormInvalidException>()));
-
+        () async {
       try {
-        provider.submit();
+        await provider.submit<String>();
       } on FormInvalidException catch (ex) {
         expect(ex.invalidForm, 'TestForm');
       }
+    });
+
+    test('should call FormerForm.submit when submit is called', () async {
+      final mockBuildContext = _MockBuildContext();
+      testForm = MockTestForm();
+      provider = FormerProvider(mockBuildContext, testForm, testSchema);
+
+      when(testForm.stringField).thenReturn('123');
+      when(testForm.intField).thenReturn(0);
+      when(testForm.nullableIntField).thenReturn(0);
+      when(testForm.nullableDoubleField).thenReturn(0.0);
+      when(testForm.boolField).thenReturn(false);
+      when(testForm.submit(mockBuildContext))
+          .thenAnswer((realInvocation) async => null);
+
+      await provider.submit();
+      verify(testForm.submit(mockBuildContext)).called(1);
     });
 
     test('should notify listeners when enabled state is changed', () {

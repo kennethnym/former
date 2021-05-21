@@ -13,7 +13,7 @@ abstract class FormerForm {
   ///
   /// If you need to access any value in [context], make sure they are parents
   /// of the [Former] widget that provides the form.
-  Future<void> submit(BuildContext context);
+  Future submit(BuildContext context);
 
   /// Retrieves the type of [field].
   /// If [field] is not in this form, an empty string is returned.
