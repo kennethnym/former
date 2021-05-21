@@ -1,3 +1,16 @@
+## [0.2.0-dev.4] - v2 fourth dev release
+
+New changes:
+
+- `FormerForm.submit` now allows return values.
+    - Subsequently, `FormerProvider.submit` now accepts a generic type that should match the return value of `FormerForm.submit`.
+      For example, if `FormerForm.submit` returns `Future<String>`, `String` should be used as a type parameter to `FormerProvider.submit`.
+
+Breaking changes:
+
+- `FormerProvider.submit` now automatically disables the form during form submission until it gets a response back.
+- `FormerProvider.submit` now throws a `FormInvalidException` if the form is invalid.
+
 ## [0.2.0-dev.3] - v2 third dev release
 
 New features:
