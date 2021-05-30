@@ -31,5 +31,3 @@ jobs:
         if: ${{ github.event_name == 'workflow_dispatch' }}
 
       - run: mike set-default latest
-
-      - run: mkdocs gh-deploy --force
