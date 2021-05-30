@@ -30,4 +30,4 @@ jobs:
       - run: mike deploy --push --force --update-alias ${{ github.event.inputs.version }} latest
         if: ${{ github.event_name == 'workflow_dispatch' }}
 
-      - run: mike set-default latest
+      - run: mike set-default --push latest
