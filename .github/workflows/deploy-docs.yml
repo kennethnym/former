@@ -25,9 +25,9 @@ jobs:
       - run: pip install mkdocs-material mike
 
       - run: mike deploy --push --update-alias ${GITHUB_REF#refs/tags/v} latest
-        if: ${{ GITHUB_EVENT_NAME == 'release' }}
+        if: ${{ github.event_name == 'release' }}
 
       - run: mike deploy --push --update-alias ${{ github.event.inputs.version }} latest
-        if: ${{ GITHUB_EVENT_NAME == 'workflow_dispatch' }}
+        if: ${{ github.event_name == 'workflow_dispatch' }}
 
       - run: mike set-default latest
