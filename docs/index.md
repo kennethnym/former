@@ -21,3 +21,7 @@ This is where `former` comes in.
 - Automatic value tracking via `Former` form controls.
 - Easy error handling with `FormerError` widget.
 - Type-safe access of form.
+
+## API reference
+
+[API reference on pub.dev](https://pub.dev/documentation/former/latest/)

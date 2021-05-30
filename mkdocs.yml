@@ -6,6 +6,19 @@ theme:
   name: material
   icon:
     repo: fontawesome/brands/github
+  palette:
+    primary: cyan
+
+nav:
+  - Welcome to former!: index.md
+  - Installation: installation.md
+  - Usage: usage.md
+  - Form controls:
+      - Introduction: form-controls/introduction.md
+      - Custom control: form-controls/custom-control.md
+  - Validation: validation.md
+  - Form submission: form-submission.md
+  - Error handling: error-handling.md
 
 markdown_extensions:
   - pymdownx.highlight
