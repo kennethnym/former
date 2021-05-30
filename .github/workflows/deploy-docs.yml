@@ -24,10 +24,10 @@ jobs:
 
       - run: pip install mkdocs-material mike
 
-      - run: mike deploy --push --update-alias ${GITHUB_REF#refs/tags/v} latest
+      - run: mike deploy --push --force --update-alias ${GITHUB_REF#refs/tags/v} latest
         if: ${{ github.event_name == 'release' }}
 
-      - run: mike deploy --push --update-alias ${{ github.event.inputs.version }} latest
+      - run: mike deploy --push --force --update-alias ${{ github.event.inputs.version }} latest
         if: ${{ github.event_name == 'workflow_dispatch' }}
 
       - run: mkdocs gh-deploy --force
