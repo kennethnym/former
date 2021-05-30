@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:former/src/former_provider.dart';
-import 'package:former/src/former_schema.dart';
 import 'package:provider/provider.dart';
 
 import '../former_form.dart';
+import '../former_provider.dart';
+import '../former_schema.dart';
 
+/// A function that creates a [FormerForm].
 typedef FormCreator<F extends FormerForm> = F Function();
+
+/// A function that creates a [FormerSchema] for a [FormerForm].
 typedef SchemaCreator = FormerSchema Function();
 
 /// Provides child widgets with the given form that needs to conform to the
@@ -31,8 +34,10 @@ class Former<TForm extends FormerForm> extends StatelessWidget {
   /// A function that creates a [FormerForm].
   final FormCreator<TForm> form;
 
+  /// A function that creates a [FormerSchema] for a [FormerForm].
   final SchemaCreator schema;
 
+  /// Child [Widget] that can consume [FormerForm].
   final Widget child;
 
   /// Wraps child with [FormerProvider].
@@ -46,6 +51,7 @@ class Former<TForm extends FormerForm> extends StatelessWidget {
     required this.child,
   });
 
+  /// Retrieves the [FormerProvider] in [context].
   static FormerProvider<TForm> of<TForm extends FormerForm>(
           BuildContext context,
           {bool listen = true}) =>

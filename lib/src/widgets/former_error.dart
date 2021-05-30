@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:former/former.dart';
 import 'package:provider/provider.dart';
+
+import '../former_form.dart';
+import '../former_field.dart';
+import '../former_provider.dart';
+import 'former.dart';
 
 /// A widget that shows an error message of the given field. If the field
 /// doesn't have any error, an empty [Container] is built.

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:former/former.dart';
 import 'package:provider/provider.dart';
+
+import '../former_field.dart';
+import '../former_form.dart';
+import '../former_provider.dart';
+import 'former.dart';
 
 /// A normal [Slider] that:
 ///   - controls the given field

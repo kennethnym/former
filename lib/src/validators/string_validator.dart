@@ -1,5 +1,23 @@
 import 'package:former/src/validators/validator.dart';
 
+/// A [Validator] that validates a [String] field.
+/// It provides numerous constraints that can be imposed on the [String] field.
+///
+/// Constraints can be chained together via the cascade operator `..`.
+/// Constraints that come first take precedence.
+///
+/// Example:
+/// ```
+/// Former(
+///   form: ...
+///   schema: MySchema(
+///     someStringField: StringMust()..hasMinLength(10)..beAnEmail(),
+///   )
+/// )
+/// ```
+///
+/// In the above snippet, the [StringMust] validator ensures that
+/// `someStringField` is a string that has at least 10 characters and is an email.
 class StringMust implements Validator<String> {
   String _error = '';
 

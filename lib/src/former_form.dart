@@ -1,5 +1,6 @@
-import 'package:flutter/cupertino.dart';
-import 'package:former/src/former_field.dart';
+import 'package:flutter/widgets.dart';
+
+import 'former_field.dart';
 
 /// A form that will be consumed by [Former].
 /// This ensures the form class interfaces with this library properly.

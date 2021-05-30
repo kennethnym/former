@@ -4,10 +4,12 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:former/former.dart';
-import 'package:former/src/former_provider.dart';
-import 'package:former/src/former_field.dart';
 import 'package:provider/provider.dart';
+
+import '../former_form.dart';
+import '../former_field.dart';
+import '../former_provider.dart';
+import 'former.dart';
 
 /// A normal [TextField] that
 ///   - updates the value of the given field in the form whenever it changes.

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:former/former.dart';
 import 'package:provider/provider.dart';
+
+import '../former_form.dart';
+import '../former_field.dart';
+import '../former_provider.dart';
+import 'former.dart';
 
 /// A normal [Checkbox] that
 ///   - updates the value of the given field in the form whenever it changes.
@@ -9,7 +13,7 @@ import 'package:provider/provider.dart';
 ///
 /// The given field has to be:
 ///   - a boolean field ([tristate] must be **off**), or
-///   - a nullable boolean field ([tristate] must be **on).
+///   - a nullable boolean field ([tristate] must be **on**).
 ///
 /// If the field is incompatible, an [AssertionError] will be thrown.
 class FormerCheckbox<TForm extends FormerForm> extends StatefulWidget {

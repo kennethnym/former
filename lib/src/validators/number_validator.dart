@@ -1,5 +1,26 @@
 import 'validator.dart';
 
+/// A [Validator] that validates a number field. This includes:
+///   - [int]
+///   - [double]
+///   - [num].
+///
+/// [NumberMust] provides numerous constraints that can be imposed on the number field.
+///
+/// Constraints can be chained together via the cascade operator `..`.
+/// Constraints that come first take precedence.
+///
+/// Example:
+/// ```
+/// Former(
+///   form: ...
+///   schema: MySchema(
+///     someIntField: NumberMust()..beWithin(0, 10)
+///   )
+/// )
+/// ```
+/// In the above snippet, the [NumberMust] validator ensures that
+/// `someIntField` must be within 0 and 10, inclusive on both ends.
 class NumberMust implements Validator<num> {
   String _error = '';
 

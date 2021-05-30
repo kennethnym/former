@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
-import 'package:former/src/exceptions/form_invalid_exception.dart';
-import 'package:former/src/former_field.dart';
-import 'package:former/src/former_form.dart';
-import 'package:former/src/former_schema.dart';
-import 'package:provider/provider.dart';
+
+import 'exceptions/form_invalid_exception.dart';
+import 'former_field.dart';
+import 'former_form.dart';
+import 'former_schema.dart';
 
 class FormerProvider<TForm extends FormerForm> extends ChangeNotifier {
   final TForm form;
@@ -16,12 +16,21 @@ class FormerProvider<TForm extends FormerForm> extends ChangeNotifier {
 
   FormerProvider(this._context, this.form, this._schema);
 
-  static FormerProvider<TForm> of<TForm extends FormerForm>(
-          BuildContext context,
-          {bool listen = true}) =>
-      Provider.of(context, listen: listen);
-
+  /// Whether [form] is enabled and can be edited.
+  ///
+  /// By default, if [form] is disabled, all former controls will be disabled
+  /// as well.
   bool get isFormEnabled => _isFormEnabled;
+
+  /// Sets whether [form] is enabled and can be edited.
+  ///
+  /// Whenever this setter is called, all listeners of [FormerProvider]
+  /// will be notified. This includes all the former controls, which means
+  /// that they will be enabled/disabled based on what is set.
+  set isFormEnabled(bool isEnabled) {
+    _isFormEnabled = isEnabled;
+    notifyListeners();
+  }
 
   /// Validates [form] that it conforms to the schema and returns whether
   /// it is valid. Listeners of [FormerProvider] are notified when this getter
@@ -30,11 +39,6 @@ class FormerProvider<TForm extends FormerForm> extends ChangeNotifier {
     final isValid = _schema.validate(form);
     notifyListeners();
     return isValid;
-  }
-
-  set isFormEnabled(bool isEnabled) {
-    _isFormEnabled = isEnabled;
-    notifyListeners();
   }
 
   /// Retrieves the error message of [field]. Empty if [field] is valid.
