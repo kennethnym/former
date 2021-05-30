@@ -11,8 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: git config user.name ${{ GIT_NAME }}
-      - run: git config user.email ${{ GIT_EMAIL }}
+      - run: git config user.name ${{ secrets.GIT_NAME }}
+      - run: git config user.email ${{ secrets.GIT_EMAIL }}
       - uses: actions/setup-python@v2
         with:
           python-version: 3.x
