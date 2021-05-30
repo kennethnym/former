@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: git config user.name ${GIT_NAME}
-      - run: git config user.email ${GIT_EMAIL}
+      - run: git config user.name ${{ GIT_NAME }}
+      - run: git config user.email ${{ GIT_EMAIL }}
       - uses: actions/setup-python@v2
         with:
           python-version: 3.x
       - run: pip install mkdocs-material mike
-      - run: mike deploy --push --update-alias ${GITHUB_REF##*/} latest
+      - run: mike deploy --push --update-alias ${GITHUB_REF#refs/tags/} latest
       - run: mike set-default latest
