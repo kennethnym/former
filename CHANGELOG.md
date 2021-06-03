@@ -1,4 +1,4 @@
-## [0.2.0-beta.1] - v2 Beta release 1
+## [0.2.0-beta.5] - v2 pre-release (beta) 5
 
 - No changes - bumped to beta for semantics.
 

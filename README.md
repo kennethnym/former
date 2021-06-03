@@ -16,7 +16,7 @@ This is where `former` comes in.
 
 ## Installation
 
-Latest version: `0.2.0-dev.3`
+Latest version: `0.2.0-beta.5`
 
 **NOTE: THIS PACKAGE IS AT A PRE-RELEASE STAGE - API CAN CHANGE DRASTICALLY IN THE FUTURE.**
 

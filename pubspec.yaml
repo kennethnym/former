@@ -1,6 +1,6 @@
 name: former
 description: Easy form building in Flutter with a fluent schema API.
-version: 0.2.0-beta.1
+version: 0.2.0-beta.5
 homepage: https://github.com/kennethnym/former
 
 environment:
