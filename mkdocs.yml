@@ -1,6 +1,7 @@
 site_name: Former documentation
 repo_url: https://github.com/kennethnym/former
 repo_name: kennethnym/former
+docs_dir: doc
 
 theme:
   name: material
