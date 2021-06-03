@@ -1,3 +1,8 @@
+## [0.2.0-rc.1] - v2 release candidate 1
+
+- Still figuring out pub versioning, to avoid confusion, I decide to do a release candidate release since there will
+  unlikely be any other API breaking changes.
+
 ## [0.2.0-beta.5] - v2 pre-release (beta) 5
 
 - No changes - bumped to beta for semantics.
@@ -7,8 +12,9 @@
 New changes:
 
 - `FormerForm.submit` now allows return values.
-    - Subsequently, `FormerProvider.submit` now accepts a generic type that should match the return value of `FormerForm.submit`.
-      For example, if `FormerForm.submit` returns `Future<String>`, `String` should be used as a type parameter to `FormerProvider.submit`.
+    - Subsequently, `FormerProvider.submit` now accepts a generic type that should match the return value
+      of `FormerForm.submit`. For example, if `FormerForm.submit` returns `Future<String>`, `String` should be used as a
+      type parameter to `FormerProvider.submit`.
 
 Breaking changes:
 
@@ -32,7 +38,7 @@ New features:
 ### Breaking changes
 
 - `FormerForm.submit` now requires a `BuildContext` parameter. Forms that extend `FormerForm`
-should have their `submit` methods updated accordingly.
+  should have their `submit` methods updated accordingly.
 
 ## [0.1.0-dev.1] - Initial dev release
 
