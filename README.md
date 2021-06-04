@@ -58,7 +58,7 @@ API.
 First, lets create our form class in `my_form.dart`:
 
 ```dart
-import 'package:flutter_gen/flutter_gen.dart';
+import 'package:former_gen/former_gen.dart';
 
 @Formable()
 abstract class _MyForm extends FormerForm {
