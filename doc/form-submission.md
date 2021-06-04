@@ -4,7 +4,6 @@
 submission:
 
 ```dart
-
 final provider = Former.of<MyForm>(context);
 provider.submit();
 ```
@@ -42,7 +41,7 @@ the return type of your implementation of the `submit` method.
 
 ## Delegating submission to Bloc
 
-It is also possible to delegate form submission a bloc:
+It is also possible to delegate form submission to a bloc:
 
 ```dart
 @Formable()

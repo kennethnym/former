@@ -10,7 +10,9 @@ API.
 First, lets create our form class in `my_form.dart`:
 
 ```dart
-import 'package:flutter_gen/flutter_gen.dart';
+import 'package:former/former.dart';
+import 'package:former/validators.dart';
+import 'package:former_gen/former_gen.dart';
 
 @Formable()
 abstract class _MyForm extends FormerForm {
@@ -22,6 +24,8 @@ A couple of things to note:
 - The form class is abstract and private. This is because some logic has to be mixed in before it is usable by `former`.
 - The form class extends `FormerForm`. It interfaces our form class with `former` so that it can be used by `former`
   internals.
+- The `former.validators` library is imported because the generated code will generate a schema class
+  for `_MyForm` that specifies the respective validators that each field needs to use. 
 
 The `FormerForm` requires subclasses to implement the bracket operators. This is not needed in our abstract class
 because that burden will be handled by `former`'s code generation. We only need to implement the `submit` method. For
