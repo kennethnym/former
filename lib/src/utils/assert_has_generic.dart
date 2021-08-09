@@ -16,7 +16,7 @@ void assertHasGeneric<TForm extends FormerForm>({required String forWidget}) {
 Example:
 
 $forWidget<MyForm>(
-          ^^^^^^^^
+${' ' * forWidget.length}^^^^^^^^
           Pass in the type of your form here.
 
   ...other params,
