@@ -18,6 +18,15 @@ void main() {
       expect(tester.takeException(), isNull);
     });
 
+    testWidgets('should fail assertion if the type of the form is not passed', (tester) async {
+      await tester.pumpWidget(
+        wrapWithFormer(
+          control: FormerError(field: TestFormField.stringField),
+        ),
+      );
+      expect(tester.takeException(), isInstanceOf<AssertionError>());
+    });
+
     testWidgets('should show error of the field', (tester) async {
       final error = GlobalKey();
 

@@ -6,6 +6,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
+import '../utils/assert_has_generic.dart';
 import '../former_form.dart';
 import '../former_field.dart';
 import '../former_provider.dart';
@@ -159,6 +160,8 @@ class _FormerTextFieldState<F extends FormerForm>
   @override
   void initState() {
     super.initState();
+
+    assertHasGeneric<F>(forWidget: 'FormerTextField');
 
     final formProvider = Former.of<F>(context, listen: false);
     final initialValue = formProvider.form[widget.field];
