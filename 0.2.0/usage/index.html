@@ -1,0 +1,713 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.5">
+    
+    
+      
+        <title>Usage - Former documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.be71726b.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#00bdd6">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="cyan" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#usage" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Former documentation" class="md-header__button md-logo" aria-label="Former documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Former documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Usage
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/kennethnym/former/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    kennethnym/former
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Former documentation" class="md-nav__button md-logo" aria-label="Former documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Former documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/kennethnym/former/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    kennethnym/former
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Welcome to former!
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Usage
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Usage
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#creating-the-form" class="md-nav__link">
+    Creating the form
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specifying-the-requirements" class="md-nav__link">
+    Specifying the requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-form-controls" class="md-nav__link">
+    Building form controls
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wrapping-it-all-up" class="md-nav__link">
+    Wrapping it all up
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-code" class="md-nav__link">
+    Source code
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Form controls
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Form controls" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Form controls
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../form-controls/introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../form-controls/custom-control/" class="md-nav__link">
+        Custom control
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        Validation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../form-submission/" class="md-nav__link">
+        Form submission
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../error-handling/" class="md-nav__link">
+        Error handling
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#creating-the-form" class="md-nav__link">
+    Creating the form
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specifying-the-requirements" class="md-nav__link">
+    Specifying the requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-form-controls" class="md-nav__link">
+    Building form controls
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wrapping-it-all-up" class="md-nav__link">
+    Wrapping it all up
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-code" class="md-nav__link">
+    Source code
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/kennethnym/former/edit/master/docs/usage.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="usage">Usage</h1>
+<p>This guide will go through how to use <code>former</code>.</p>
+<h2 id="creating-the-form">Creating the form</h2>
+<p><code>former</code> works by inspecting your form class and generating the corresponding code that makes it work with the <code>former</code>
+API.</p>
+<p>First, lets create our form class in <code>my_form.dart</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="s1">&#39;package:former/former.dart&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="s1">&#39;package:former/validators.dart&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="s1">&#39;package:former_gen/former_gen.dart&#39;</span><span class="p">;</span>
+
+<span class="nd">@Formable</span><span class="p">()</span>
+<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">_MyForm</span> <span class="kd">extends</span> <span class="n">FormerForm</span> <span class="p">{</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>A couple of things to note:</p>
+<ul>
+<li>The form class is abstract and private. This is because some logic has to be mixed in before it is usable by <code>former</code>.</li>
+<li>The form class extends <code>FormerForm</code>. It interfaces our form class with <code>former</code> so that it can be used by <code>former</code>
+  internals.</li>
+<li>The <code>former.validators</code> library is imported because the generated code will generate a schema class
+  for <code>_MyForm</code> that specifies the respective validators that each field needs to use. </li>
+</ul>
+<p>The <code>FormerForm</code> requires subclasses to implement the bracket operators. This is not needed in our abstract class
+because that burden will be handled by <code>former</code>'s code generation. We only need to implement the <code>submit</code> method. For
+example, it can include submitting your form to some API for further processing.</p>
+<p>For simplicity's sake, our implementation of <code>submit</code> only returns an empty future value.</p>
+<p>Notice that the <code>submit</code> method
+accepts a <code>BuildContext</code>. This is the same <code>BuildContext</code> used by the <code>Former</code> widget that we will use later
+to provide this form. It can come in handy when you want to access other <code>Provider</code>s in the context. Just make sure that
+the <code>Provider</code>s you want to access are parents of the <code>Former</code> widget that is providing the form.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Formable</span><span class="p">()</span>
+<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">_MyForm</span> <span class="kd">extends</span> <span class="n">FormerForm</span> <span class="p">{</span>
+  <span class="nd">@override</span>
+  <span class="n">Future</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span> <span class="n">submit</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// TODO: implement submit()</span>
+    <span class="k">return</span> <span class="n">Future</span><span class="p">.</span><span class="n">value</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Let's also add some fields to our form:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Formable</span><span class="p">()</span>
+<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">_MyForm</span> <span class="kd">extends</span> <span class="n">FormerForm</span> <span class="p">{</span>
+  <span class="kt">String</span> <span class="n">username</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+  <span class="kt">String</span> <span class="n">email</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+
+  <span class="nd">@override</span>
+  <span class="n">Future</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span> <span class="n">submit</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// TODO: implement submit()</span>
+    <span class="k">return</span> <span class="n">Future</span><span class="p">.</span><span class="n">value</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Our form class is not usable until we mix in the generated mixin which makes the form "indexable" with the bracket
+operator, and also contain type information of the fields in the form. Add the following before the class declaration:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">MyForm</span> <span class="o">=</span> <span class="n">_MyForm</span> <span class="kd">with</span> <span class="n">_$MyForm</span><span class="p">;</span>
+</code></pre></div>
+<p>...and add this:</p>
+<div class="highlight"><pre><span></span><code><span class="k">part</span> <span class="s1">&#39;my_form.g.dart&#39;</span><span class="p">;</span>
+</code></pre></div>
+<p>to import the generated code.</p>
+<p>The Dart analyzer will complain about unrecognized symbols and imports. To fix it, start the code generation
+via <code>build_runner</code>:</p>
+<div class="highlight"><pre><span></span><code>flutter pub run build_runner build
+</code></pre></div>
+<h2 id="specifying-the-requirements">Specifying the requirements</h2>
+<p>Imagine that our form has the following requirements:</p>
+<ul>
+<li>the username should be at least 10 characters long, but not longer than 50 characters.</li>
+<li>the email field, well, should contain a valid email.</li>
+</ul>
+<p>Without <code>former</code>, this has to be done in an imperative way by, for example, checking the length of the string.
+<code>former</code>'s super declarative API for specifying requirements makes everything easy and readable. All you have to do is
+to create the schema class that is generated for you. In <code>my_form.dart</code>,</p>
+<div class="highlight"><pre><span></span><code><span class="kd">final</span> <span class="n">schema</span> <span class="o">=</span> <span class="n">MyFormSchema</span><span class="p">(</span>
+  <span class="nl">username:</span> <span class="n">StringMust</span><span class="p">()</span>
+    <span class="p">..</span><span class="n">hasMinLength</span><span class="p">(</span><span class="m">10</span><span class="p">)</span>
+    <span class="p">..</span><span class="n">hasMaxLength</span><span class="p">(</span><span class="m">50</span><span class="p">),</span>
+  <span class="nl">email:</span> <span class="n">StringMust</span><span class="p">()</span>
+    <span class="p">..</span><span class="n">beAnEmail</span><span class="p">(),</span>
+<span class="p">);</span>
+</code></pre></div>
+<p>As you can see, the API is very self-explanatory. Note the use of the cascade operator <code>..</code> - in Dart, instead of
+returning <code>this</code> for method chaining, the cascade operator <code>..</code> is preferred.</p>
+<h2 id="building-form-controls">Building form controls</h2>
+<p><code>former</code> exports various widgets that interacts with the given form. To start, let's first create our form widget:</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="s1">&#39;package:former/former.dart&#39;</span><span class="p">;</span>
+
+<span class="k">import</span> <span class="s1">&#39;my_form.dart&#39;</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nc">Form</span> <span class="kd">extends</span> <span class="n">StatelessWidget</span> <span class="p">{</span>
+  <span class="nd">@override</span>
+  <span class="n">Widget</span> <span class="n">build</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">Column</span><span class="p">(</span>
+      <span class="nl">children:</span> <span class="p">[</span>
+        <span class="n">FormerTextField</span><span class="o">&lt;</span><span class="n">MyForm</span><span class="o">&gt;</span><span class="p">(</span><span class="nl">field:</span> <span class="n">MyFormField</span><span class="p">.</span><span class="n">username</span><span class="p">),</span>
+        <span class="n">FormerTextField</span><span class="o">&lt;</span><span class="n">MyForm</span><span class="o">&gt;</span><span class="p">(</span><span class="nl">field:</span> <span class="n">MyFormField</span><span class="p">.</span><span class="n">email</span><span class="p">),</span>
+        <span class="n">ElevatedButton</span><span class="p">(</span>
+            <span class="nl">onPressed:</span> <span class="p">()</span> <span class="p">{</span>
+              <span class="n">Former</span><span class="p">.</span><span class="n">of</span><span class="o">&lt;</span><span class="n">MyForm</span><span class="o">&gt;</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="nl">listen:</span> <span class="kc">false</span><span class="p">).</span><span class="n">submit</span><span class="p">();</span>
+            <span class="p">},</span>
+            <span class="nl">child:</span> <span class="n">Text</span><span class="p">(</span><span class="s1">&#39;Submit form&#39;</span><span class="p">)</span>
+        <span class="p">)</span>
+      <span class="p">],</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Our form contains two text fields that control the <code>username</code> and the <code>email</code> field respectively. The <code>MyFormField</code>
+class is automatically generated for you, so you don't have to create one yourself.</p>
+<p>When the button is clicked, <code>MyForm</code>'s <code>submit</code> method is called to submit the form. Beside submitting the
+form, <code>Former.of(context)</code> gives you access to:</p>
+<ul>
+<li>the current form with <code>.form</code>. For example, you can access the current value of the username field
+  with <code>Former.of&lt;MyForm&gt;(context).form.username</code></li>
+<li>enabling/disabling the form with <code>.isFormEnabled</code> getter/setter. When a form is disabled, all the former controls
+  controlling the form is automatically disabled as well.</li>
+<li>the error of a given field with <code>.errorOf(field)</code> which returns the error message as a result of a failed validation.
+  It returns an empty string when the field is valid, or when no validation is performed yet.</li>
+</ul>
+<p>This is an <em>extremely</em> simplified version of a form to showcase the widgets. Realistically, each Former control should
+have a label describing what they do. In the future, there may be a widget that attaches a label to a Former control.
+For now, it has to be done manually.</p>
+<h2 id="wrapping-it-all-up">Wrapping it all up</h2>
+<p>Finally, all we have to do is to wrap our form widget with the <code>Former</code> widget:</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="s1">&#39;package:former/former.dart&#39;</span><span class="p">;</span>
+
+<span class="k">import</span> <span class="s1">&#39;my_form.dart&#39;</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nc">MyApp</span> <span class="kd">extends</span> <span class="n">StatelessWidget</span> <span class="p">{</span>
+  <span class="nd">@override</span>
+  <span class="n">Widget</span> <span class="n">build</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">MaterialApp</span><span class="p">(</span>
+      <span class="nl">home:</span> <span class="n">Scaffold</span><span class="p">(</span>
+        <span class="nl">body:</span> <span class="n">Former</span><span class="p">(</span>
+          <span class="nl">form:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="n">MyForm</span><span class="p">(),</span>
+          <span class="nl">schema:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="n">schema</span><span class="p">,</span> <span class="c1">// exported from my_form.dart</span>
+          <span class="nl">child:</span> <span class="n">_MyForm</span><span class="p">(),</span>
+        <span class="p">),</span>
+      <span class="p">),</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="source-code">Source code</h2>
+<p>The full source code is available in the <code>example</code> folder.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../installation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Installation" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Installation
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../form-controls/introduction/" class="md-footer__link md-footer__link--next" aria-label="Next: Introduction" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Introduction
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.409db549.min.js", "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.56a63758.min.js"></script>
+      
+    
+  </body>
+</html>
