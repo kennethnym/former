@@ -16,6 +16,16 @@ void main() {
       expect(tester.takeException(), isNull);
     });
 
+    testWidgets('should fail assertion if the type of the form is not passed',
+        (tester) async {
+      await tester.pumpWidget(
+        wrapWithFormer(
+          control: FormerSlider(field: TestFormField.intField),
+        ),
+      );
+      expect(tester.takeException(), isInstanceOf<AssertionError>());
+    });
+
     testWidgets(
       'should fail assertion if incompatible field is used',
       (tester) async {

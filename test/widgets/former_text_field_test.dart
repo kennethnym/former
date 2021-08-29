@@ -17,6 +17,16 @@ void main() {
       expect(tester.takeException(), isNull);
     });
 
+    testWidgets('should fail assertion if the type of the form is not passed',
+        (tester) async {
+      await tester.pumpWidget(
+        wrapWithFormer(
+          control: FormerTextField(field: TestFormField.stringField),
+        ),
+      );
+      expect(tester.takeException(), isInstanceOf<AssertionError>());
+    });
+
     testWidgets(
       'should fail assertion if field is a nullable number but keyboard type is not number',
       (tester) async {

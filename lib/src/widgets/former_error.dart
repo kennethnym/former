@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../utils/assert_has_generic.dart';
 import '../former_form.dart';
 import '../former_field.dart';
 import '../former_provider.dart';
@@ -59,6 +60,8 @@ class FormerError<TForm extends FormerForm> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    assertHasGeneric<TForm>(forWidget: 'FormerError');
+
     final child = this.child;
     if (child != null) return child;
 

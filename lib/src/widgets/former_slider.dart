@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 
+import '../utils/assert_has_generic.dart';
 import '../former_field.dart';
 import '../former_form.dart';
 import '../former_provider.dart';
@@ -105,6 +106,8 @@ class _FormerSliderState<F extends FormerForm> extends State<FormerSlider> {
   @override
   void initState() {
     super.initState();
+
+    assertHasGeneric<F>(forWidget: 'FormerSlider');
 
     _formProvider = Former.of(context, listen: false);
     final initialValue = _formProvider.form[widget.field];

@@ -206,7 +206,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.2.0-dev.4"
+    version: "0.2.0-rc.1"
   former_gen:
     dependency: "direct dev"
     description:
