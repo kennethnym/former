@@ -1,6 +1,24 @@
+## [0.2.0] - official release 🎉!
+
+Improvements:
+- Former widgets now provide a more descriptive error message when the type of the form is not passed.
+  For example:
+  ```
+  You must pass in the type of your form that this Former widget is consuming, so that the widget can locate and obtain the correct form.
+  Example:
+
+  FormerTextField<MyForm>(
+                 ^^^^^^^^
+                 Pass in the type of your form here.
+    ...other params,
+  ),
+
+  This assertion is made by: FormerTextField
+  ```
+
 ## [0.2.0-rc.1] - v2 release candidate 1
 
-- Still figuring out pub versioning, to avoid confusion, I decide to do a release candidate release since there will
+- Still figuring out pub versioning, to avoid confusion, I decided to do a release candidate release since there will
   unlikely be any other API breaking changes.
 
 ## [0.2.0-beta.5] - v2 pre-release (beta) 5
