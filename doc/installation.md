@@ -1,6 +1,6 @@
 # Installation
 
-Latest version: `0.2.0-beta.1`
+Latest version: `0.2.0`
 
 **NOTE: THIS PACKAGE IS IN BETA - API CAN CHANGE DRASTICALLY IN THE FUTURE.**
 
