@@ -35,6 +35,9 @@ class FormerProvider<TForm extends FormerForm> extends ChangeNotifier {
   /// Validates [form] that it conforms to the schema and returns whether
   /// it is valid. Listeners of [FormerProvider] are notified when this getter
   /// is called.
+  ///
+  /// Note: The subtle difference between this and [validateForm] can be
+  /// confusing, and I am thinking of a way to combine both.
   bool get isFormValid {
     final isValid = _schema.validate(form);
     notifyListeners();
@@ -48,6 +51,25 @@ class FormerProvider<TForm extends FormerForm> extends ChangeNotifier {
   void update({required FormerField field, required dynamic withValue}) {
     form[field] = withValue;
   }
+
+  /// Rebuilds widgets dependent on form values.
+  ///
+  /// This method is a temporary patch over my oversight of not letting
+  /// them rebuild automatically when values are updated through [update].
+  ///
+  /// When v1 releases, this method will be deprecated.
+  void rebuild() {
+    notifyListeners();
+  }
+
+  /// Validates [form] and return whether it is valid. Unlike
+  /// [isFormValid], this does not notify listeners of [FormerProvider].
+  ///
+  /// Error messages of invalid fields can be obtained using [errorOf].
+  ///
+  /// Note: The subtle difference between this and [isFormValid] can be
+  /// confusing, and I am thinking of a way to combine both.
+  bool validateForm() => _schema.validate(form);
 
   /// Checks if [form] is valid, then submits [form] by calling
   /// [FormerForm.submit]. ([FormerForm] is extended by your own form classes,

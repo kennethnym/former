@@ -3,9 +3,12 @@
 // Do not manually edit this file.
 
 import 'dart:async' as _i4;
+import 'dart:ui' as _i8;
 
 import 'package:flutter/src/widgets/framework.dart' as _i5;
 import 'package:former/src/former_field.dart' as _i3;
+import 'package:former/src/former_form.dart' as _i6;
+import 'package:former/src/former_provider.dart' as _i7;
 import 'package:mockito/mockito.dart' as _i1;
 
 import 'test_form.dart' as _i2;
@@ -77,4 +80,67 @@ class MockTestForm extends _i1.Mock implements _i2.TestForm {
   String typeOf(_i3.FormerField? field) =>
       (super.noSuchMethod(Invocation.method(#typeOf, [field]), returnValue: '')
           as String);
+}
+
+/// A class which mocks [FormerProvider].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockFormerProvider<TForm extends _i6.FormerForm> extends _i1.Mock
+    implements _i7.FormerProvider<TForm> {
+  MockFormerProvider() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  TForm get form =>
+      (super.noSuchMethod(Invocation.getter(#form), returnValue: null)
+          as TForm);
+  @override
+  bool get isFormEnabled =>
+      (super.noSuchMethod(Invocation.getter(#isFormEnabled), returnValue: false)
+          as bool);
+  @override
+  set isFormEnabled(bool? isEnabled) =>
+      super.noSuchMethod(Invocation.setter(#isFormEnabled, isEnabled),
+          returnValueForMissingStub: null);
+  @override
+  bool get isFormValid =>
+      (super.noSuchMethod(Invocation.getter(#isFormValid), returnValue: false)
+          as bool);
+  @override
+  bool get hasListeners =>
+      (super.noSuchMethod(Invocation.getter(#hasListeners), returnValue: false)
+          as bool);
+  @override
+  String errorOf(_i3.FormerField? field) =>
+      (super.noSuchMethod(Invocation.method(#errorOf, [field]), returnValue: '')
+          as String);
+  @override
+  void update({_i3.FormerField? field, dynamic withValue}) => super
+      .noSuchMethod(
+          Invocation.method(
+              #update, [], {#field: field, #withValue: withValue}),
+          returnValueForMissingStub: null);
+  @override
+  void rebuild() => super.noSuchMethod(Invocation.method(#rebuild, []),
+      returnValueForMissingStub: null);
+  @override
+  _i4.Future<T> submit<T>() =>
+      (super.noSuchMethod(Invocation.method(#submit, []),
+          returnValue: Future<T>.value(null)) as _i4.Future<T>);
+  @override
+  void addListener(_i8.VoidCallback? listener) =>
+      super.noSuchMethod(Invocation.method(#addListener, [listener]),
+          returnValueForMissingStub: null);
+  @override
+  void removeListener(_i8.VoidCallback? listener) =>
+      super.noSuchMethod(Invocation.method(#removeListener, [listener]),
+          returnValueForMissingStub: null);
+  @override
+  void dispose() => super.noSuchMethod(Invocation.method(#dispose, []),
+      returnValueForMissingStub: null);
+  @override
+  void notifyListeners() =>
+      super.noSuchMethod(Invocation.method(#notifyListeners, []),
+          returnValueForMissingStub: null);
 }

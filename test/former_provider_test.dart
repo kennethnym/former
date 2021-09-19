@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:former/former.dart';
@@ -54,6 +55,24 @@ void main() {
       verify(listener()).called(1);
     });
 
+    test('should validate form and return whether it is valid', () {
+      final listener = _TestProviderListener();
+
+      provider.addListener(listener);
+
+      final isFormValid = provider.validateForm();
+
+      expect(isFormValid, isFalse);
+      verifyNever(listener());
+
+      testForm.stringField = '123';
+
+      final isFormValid2 = provider.validateForm();
+
+      expect(isFormValid2, isTrue);
+      verifyNever(listener());
+    });
+
     test(
         'should throw FormInvalidException if the form being submitted is invalid',
         () async {
@@ -101,6 +120,17 @@ void main() {
       const newValue = '123';
       provider.update(field: TestFormField.stringField, withValue: newValue);
       expect(provider.form.stringField, newValue);
+    });
+
+    test('should notify listeners when rebuild() is called', () {
+      final listener = _TestProviderListener();
+      provider.addListener(listener);
+
+      provider
+        ..form.stringField = '123'
+        ..rebuild();
+
+      verify(listener()).called(1);
     });
   });
 }
