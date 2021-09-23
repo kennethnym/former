@@ -18,7 +18,8 @@ void main() {
       expect(tester.takeException(), isNull);
     });
 
-    testWidgets('should fail assertion if the type of the form is not passed', (tester) async {
+    testWidgets('should fail assertion if the type of the form is not passed',
+        (tester) async {
       await tester.pumpWidget(
         wrapWithFormer(
           control: FormerError(field: TestFormField.stringField),
@@ -122,6 +123,49 @@ void main() {
 
         expect(text.style?.color, Colors.black);
         expect(text.style?.fontWeight, FontWeight.bold);
+      }
+    });
+
+    testWidgets('should use the given builder function to build widget',
+        (tester) async {
+      final errorWidget = GlobalKey();
+      final customWidgetKey = GlobalKey();
+      final childWidgetKey = GlobalKey();
+
+      await tester.pumpWidget(
+        wrapWithFormer(
+          control: FormerError<TestForm>(
+            key: errorWidget,
+            field: TestFormField.stringField,
+            builder: (context, error, child) => Container(
+              key: customWidgetKey,
+              child: Column(
+                children: [
+                  Text(error),
+                  child!,
+                ],
+              ),
+            ),
+            child: Container(key: childWidgetKey),
+          ),
+        ),
+      );
+
+      final provider =
+          Former.of<TestForm>(errorWidget.currentContext!, listen: false);
+
+      try {
+        await provider.submit();
+      } on FormInvalidException {
+        // exception is expected
+      } finally {
+        await tester.pump();
+        // checks if the passed builder is appropriately called.
+        expect(find.byKey(customWidgetKey), findsOneWidget);
+        // checks if the error message is passed to the builder.
+        expect(find.text(stringFieldError), findsOneWidget);
+        // checks if the child is passed to the builder.
+        expect(find.byKey(childWidgetKey), findsOneWidget);
       }
     });
   });
