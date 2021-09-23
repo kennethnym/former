@@ -8,6 +8,7 @@ class TestForm extends FormerForm {
   int? nullableIntField = 0;
   double? nullableDoubleField = 0.0;
   bool boolField = false;
+  num? nullableNumField = 0;
 
   @override
   final Map<FormerField, String> fieldType = {
@@ -16,6 +17,7 @@ class TestForm extends FormerForm {
     TestFormField.nullableIntField: 'int?',
     TestFormField.nullableDoubleField: 'double?',
     TestFormField.boolField: 'bool',
+    TestFormField.nullableNumField: 'num?',
   };
 
   @override
@@ -31,6 +33,8 @@ class TestForm extends FormerForm {
         return nullableDoubleField;
       case 4:
         return boolField;
+      case 5:
+        return nullableNumField;
     }
   }
 
@@ -52,6 +56,9 @@ class TestForm extends FormerForm {
       case 4:
         boolField = newValue;
         break;
+      case 5:
+        nullableNumField = newValue;
+        break;
     }
   }
 
@@ -71,6 +78,7 @@ class TestFormField extends FormerField {
   static const nullableIntField = TestFormField._(2);
   static const nullableDoubleField = TestFormField._(3);
   static const boolField = TestFormField._(4);
+  static const nullableNumField = TestFormField._(5);
 }
 
 class TestFormSchema extends FormerSchema<TestForm> {
@@ -79,6 +87,7 @@ class TestFormSchema extends FormerSchema<TestForm> {
   final NumberMust nullableIntField;
   final NumberMust nullableDoubleField;
   final BoolMust boolField;
+  final NumberMust nullableNumField;
 
   TestFormSchema({
     required this.stringField,
@@ -86,6 +95,7 @@ class TestFormSchema extends FormerSchema<TestForm> {
     required this.nullableIntField,
     required this.nullableDoubleField,
     required this.boolField,
+    required this.nullableNumField,
   });
 
   @override
@@ -101,6 +111,8 @@ class TestFormSchema extends FormerSchema<TestForm> {
         return nullableDoubleField.error;
       case 4:
         return boolField.error;
+      case 5:
+        return nullableNumField.error;
       default:
         return '';
     }
@@ -112,6 +124,7 @@ class TestFormSchema extends FormerSchema<TestForm> {
         intField.validate(form.intField),
         nullableIntField.validate(form.nullableIntField),
         boolField.validate(form.boolField),
+        nullableNumField.validate(form.nullableNumField),
       ].every(fieldIsValid);
 }
 
@@ -125,4 +138,5 @@ get testSchema => TestFormSchema(
       nullableIntField: NumberMust(),
       nullableDoubleField: NumberMust(),
       boolField: BoolMust()..exist(boolFieldError),
+      nullableNumField: NumberMust(),
     );

@@ -57,12 +57,32 @@ void main() {
     );
 
     testWidgets(
-      'should pass assertion if field is a nullable number and keyboard type is number',
+      'should pass assertion if field is a nullable int, double or num and keyboard type is number',
       (tester) async {
         await tester.pumpWidget(
           wrapWithFormer(
             control: FormerTextField<TestForm>(
               field: TestFormField.nullableIntField,
+              keyboardType: TextInputType.number,
+            ),
+          ),
+        );
+        expect(tester.takeException(), isNull);
+
+        await tester.pumpWidget(
+          wrapWithFormer(
+            control: FormerTextField<TestForm>(
+              field: TestFormField.nullableDoubleField,
+              keyboardType: TextInputType.number,
+            ),
+          ),
+        );
+        expect(tester.takeException(), isNull);
+
+        await tester.pumpWidget(
+          wrapWithFormer(
+            control: FormerTextField<TestForm>(
+              field: TestFormField.nullableNumField,
               keyboardType: TextInputType.number,
             ),
           ),
